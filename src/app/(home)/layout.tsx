@@ -1,4 +1,5 @@
-import Navigator from "../component/Navigator";
+import HomeNav from "../component/HomeNav";
+import NoteNav from "../component/NoteNav";
 import "../globals.css";
 
 export default function RootLayout({
@@ -9,8 +10,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navigator />
-        {children}
+        <div className="h-[100px]"></div>
+        <HomeNav />
+        <NoteNav />
+        <main> {children}</main>
       </body>
     </html>
   );

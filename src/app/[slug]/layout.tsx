@@ -1,6 +1,7 @@
 import { pretendard } from "../lib/localFont";
 import "../globals.css";
-import Navigator from "../component/Navigator";
+import NoteNav from "../component/NoteNav";
+import HomeNav from "../component/HomeNav";
 
 export default function NoteLayout({
   children,
@@ -11,7 +12,8 @@ export default function NoteLayout({
     <html lang="en">
       <body>
         <div className="h-[100px]"></div>
-        <Navigator />
+        <HomeNav />
+        <NoteNav />
         <main> {children}</main>
       </body>
     </html>

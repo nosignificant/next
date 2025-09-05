@@ -1,6 +1,8 @@
 export type Post = {
   excerpt?: string;
+  thumbnail?: string;
   slug: string;
+  parent: string;
   publishedAt: string;
   content: string;
   tags: string[];

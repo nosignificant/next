@@ -1,4 +1,4 @@
-export default function Navigator() {
+export default function NoteNav() {
   return (
     <header className="w-100">
       <div className={`h-4 w-auto flex gap-4 text-sm items-center text-nowrap`}>

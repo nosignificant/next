@@ -1,4 +1,3 @@
-// 예: app/notes/NotesClient.tsx
 "use client";
 import { Post } from "../lib/type";
 import { useEffect, useState } from "react";

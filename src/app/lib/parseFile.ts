@@ -3,12 +3,9 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { Post } from "./type";
+import { FP } from "./paths";
 import chronDate from "./chronDate";
 // ==== 설정 ====
-
-const NOTE_PATH = "src/app/content/note";
-const STUDY_PATH = "src/app/content/study";
-const READ_PATH = "src/app/content/read";
 
 // ==== 유틸 함수 ====
 
@@ -25,10 +22,14 @@ function parseTag(arr: string[]): string[] {
 
 export function getPostData(reqSlug: string): Post[] {
   let base_path = "";
-  if (reqSlug === "note") base_path = NOTE_PATH;
-  else if (reqSlug === "study") base_path = STUDY_PATH;
-  else if (reqSlug === "read") base_path = READ_PATH;
+  if (reqSlug === "note") base_path = FP.NOTE_PATH;
+  else if (reqSlug === "study") base_path = FP.STUDY_PATH;
+  else if (reqSlug === "read") base_path = FP.READ_PATH;
+  else if (reqSlug === "work") base_path = FP.WORK_PATH;
+  if (!base_path) return [];
+
   const POSTS_PATH = path.join(process.cwd(), base_path);
+  //console.log("postPath: ", POSTS_PATH);
 
   const entries = fs.readdirSync(POSTS_PATH, { withFileTypes: true });
   const posts = entries
@@ -36,12 +37,12 @@ export function getPostData(reqSlug: string): Post[] {
     .filter((name) => /\.(md|mdx)$/i.test(name));
 
   const allPostsData = posts.map((fileName) => {
+    //console.log("fileName", fileName);
     const id = fileName.replace(/\.md$/, "");
     const slug = titleFromSlug(id);
     const fullPath = path.join(POSTS_PATH, fileName);
     const raw = fs.readFileSync(fullPath, "utf-8");
     const matterResult = matter(raw);
-    console.log(matterResult.data.date);
     const publishedAt = matterResult.data.date
       .toLocaleString("ko-KR")
       .slice(0, 11);
@@ -49,6 +50,7 @@ export function getPostData(reqSlug: string): Post[] {
     return {
       slug,
       excerpt: matterResult.data.excerpt,
+      parent: reqSlug,
       publishedAt,
       content: matterResult.content,
       author: null,
