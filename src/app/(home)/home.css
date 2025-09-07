@@ -1,7 +1,10 @@
+body {
+  background-color: #e3e3e3;
+}
 .mosaic {
   display: grid;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   grid-template-columns: repeat(var(--cols, 2), 1fr);
   grid-template-rows: repeat(var(--rows, 2), 1fr);
 }
@@ -20,14 +23,20 @@
   gap: 0; /* 내부도 동일 */
 }
 
-/* 실제 셀(콘텐츠든 빈 박스든) */
 .tile {
   width: 100%;
   height: 100%;
-  box-sizing: border-box; /* border 포함해도 틈 안 생김 */
-  /* 보더를 쓰면 두께 합이 보이기도 하니, outline/box-shadow 권장 */
-  /* outline: 1px solid #111; */
-  box-shadow: inset 0 0 0 1px #111;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.emptyTile {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: rgb(147, 203, 255);
+  transform: scale(var(--sx, 1), var(--sy, 1));
+  transform-origin: center center;
 }
 
 /* 텍스트가 넘칠 때 줄바꿈/자르기 옵션(선택) */

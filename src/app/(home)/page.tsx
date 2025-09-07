@@ -1,6 +1,6 @@
 "use client";
 import { Post } from "../lib/type";
-import { useEffect, useState, useNavigate } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import "./home.css";
 import HomeBox from "./HomeBox";
