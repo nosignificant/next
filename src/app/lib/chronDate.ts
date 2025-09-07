@@ -17,7 +17,6 @@ export default function chronDate(notes: Post[]) {
     const year = date[0];
     const month = date[1];
     const day = date[2];
-    console.log(year, month, day);
     if (!note.chron) {
       note.chron = {};
     }
