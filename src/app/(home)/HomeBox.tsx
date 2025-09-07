@@ -18,7 +18,7 @@ export default function HomeBox({
 }: HomeProps) {
   if (!Array.isArray(posts) || posts.length === 0) return <EmptyBox />;
 
-  if (recursion >= posts.length) return null;
+  if (recursion >= posts.length) return <EmptyBox />;
 
   const current = posts[recursion];
 
@@ -32,25 +32,23 @@ export default function HomeBox({
     [recursion];
   });
 
-  function EmptyBox({ isRow }: { isRow: boolean }) {
-    const repeatNum = Math.floor(Math.random() * 10);
+  function EmptyBox() {
+    const repeatNum = Math.floor(Math.random() * 5);
     return Array.from({ length: repeatNum }).map((_, i) => (
-      <div key={i} className="emptyTile">
-        a1
-      </div>
+      <div key={i} className="emptyTile"></div>
     ));
 
     // 사용
   }
   return (
-    <div className="split">
+    <div className="split ">
       <div className={isRow ? " flex flex-row" : "flex flex-col"}>
         {putContent ? (
           <Link
             className="tile"
             href={`/${current.parent}?slug=${encodeURIComponent(current.slug)}`}
           >
-            {current.slug}
+            <div className="items-center justify-center"> {current.slug}</div>
           </Link>
         ) : (
           <EmptyBox />

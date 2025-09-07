@@ -28,6 +28,8 @@ body {
   height: 100%;
   box-sizing: border-box;
   background-color: white;
+  transform: scale(var(--sx, 1), var(--sy, 1));
+  transform-origin: center center;
 }
 
 .emptyTile {
