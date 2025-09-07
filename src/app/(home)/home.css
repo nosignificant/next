@@ -1,0 +1,33 @@
+/* globals.css 등 */
+.mosaic {
+  display: grid;
+  gap: 6px;
+  /* 반응형 컬럼 수: 기본 6, sm 10, lg 14 처럼 */
+  grid-template-columns: repeat(var(--cols, 6), 1fr);
+  grid-auto-rows: minmax(48px, auto);
+}
+
+/* 브레이크포인트로 --cols 변경 (원하면 Tailwind의 @screen 사용해도 OK) */
+@media (min-width: 640px) {
+  .mosaic {
+    --cols: 10;
+  }
+}
+@media (min-width: 1024px) {
+  .mosaic {
+    --cols: 14;
+  }
+}
+
+.tile {
+  /* 각 타일이 차지할 칸 수를 변수로 */
+  grid-column: span var(--c, 1);
+  grid-row: span var(--r, 1);
+  /* 데모용 스타일 */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: linear-gradient(180deg, #fff, #f4f6ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
