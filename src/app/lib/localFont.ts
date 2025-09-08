@@ -1,21 +1,9 @@
+// src/lib/localfont.ts
 import localFont from "next/font/local";
 
 export const pretendard = localFont({
-  src: [
-    {
-      path: "../fonts/pretendard-variable.woff2",
-      weight: "400",
-      style: "regular",
-    },
-    {
-      path: "../fonts/pretendard-variable.woff2",
-      weight: "500",
-      style: "medium",
-    },
-    {
-      path: "../fonts/pretendard-variable.woff2",
-      weight: "600",
-      style: "semibold",
-    },
-  ],
+  src: "../fonts/pretendard-variable.woff2",
+  variable: "--font-pretendard",
+  weight: "100 900",
+  style: "normal",
 });

@@ -32,13 +32,21 @@ export default function chronDate(notes: Post[]) {
       m = month;
       d = null;
       note.chron.month = month;
+      note.chron.border = true;
     }
 
     if (day !== d) {
       d = day;
       note.chron.day = day;
+      note.chron.notfirst = true;
     }
   });
+
+  if (!sortedNotes[0].chron) {
+    sortedNotes[0].chron = {};
+  }
+
+  sortedNotes[0].chron.notfirst = false;
 
   return sortedNotes;
 }
