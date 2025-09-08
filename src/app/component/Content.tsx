@@ -20,7 +20,7 @@ export default function Content({ posts, selected }: ContentProps) {
   const md = typeof post.content === "string" ? post.content : "";
 
   return (
-    <article className="prose prose-neutral">
+    <article className="prose prose-neutral w-[400px] md:w-[600px]">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[

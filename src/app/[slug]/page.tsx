@@ -37,8 +37,11 @@ export default function StudyPage() {
   if (loading) return <p>불러오는 중…</p>;
 
   return (
-    <div className="flex flex-col md:flex-row gap-4">
-      <SideBar posts={posts} handleSelected={handleSelected} />
+    <div className="flex flex-col md:flex-row gap-8 py-2 justify-start">
+      <div className="flex flex-col">
+        <SideBar posts={posts} handleSelected={handleSelected} />
+      </div>
+
       <div className="flex flex-row gap-4">
         <PageIndex posts={posts} selected={selected} />
         <Content posts={posts} selected={selected} />

@@ -7,20 +7,25 @@ type SideBarProps = { posts: Post[]; handleSelected: (slug: string) => void };
 export default function SideBar({ posts, handleSelected }: SideBarProps) {
   return (
     <div
-      className="hidden lg:block w-[300px] text-sm shrink-0 sticky top-0 
-    self-start h-fit font-pretendard"
+      className="hidden lg:block w-[300px] text-sm shrink-0 sticky top-20 
+    self-start h-fit font-pretendard text-[0.75rem]"
     >
       {posts.map((post) => (
         <div
           className={clsx(
-            "flex gap-8",
+            "flex gap-2",
             post.chron?.border && post.chron?.notfirst && "border-t"
           )}
           key={post.slug}
           onClick={() => handleSelected(post.slug)}
         >
           <Chron {...post} />
-          <div className="bg-white py-2 px-1 pb-2 w-full">{post.slug}</div>
+
+          {/*text nowrap 할까 말까? */}
+          {/*text nowrap 할까 말까? */}
+          <div className="bg-white py-1 px-1 pb-2 w-full text-nowrap overflow-hidden">
+            {post.slug}
+          </div>
         </div>
       ))}
     </div>

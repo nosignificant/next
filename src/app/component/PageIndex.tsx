@@ -13,11 +13,11 @@ export default function SideBar({ posts, selected }: PageIndexProps) {
     );
 
   return (
-    <div className="w-[220px] shrink-0 sticky top-0 self-start h-fit">
+    <div className="w-[220px] shrink-0 sticky top-20  self-start h-fit">
       {posts.map((post) =>
         post.slug === selected ? (
           <div key={post.slug}>
-            <Heading className="w-full py-2 border-b">{post.slug}</Heading>
+            <Heading className="w-full border-b ">{post.slug}</Heading>
             <div className="text-sm text-neutral-500">
               {post.publishedAt.toString()}
             </div>

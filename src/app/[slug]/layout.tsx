@@ -1,4 +1,3 @@
-import { pretendard } from "../lib/localFont";
 import "../globals.css";
 import NoteNav from "../component/NoteNav";
 import HomeNav from "../component/HomeNav";
@@ -11,12 +10,12 @@ export default function NoteLayout({
   return (
     <html lang="en">
       <body>
-        <div className="h-[100px]"></div>
-        <HomeNav />
-        <NoteNav />
-        <main> {children}</main>
+        <div className="px-4 sticky top-0 ">
+          <HomeNav />
+          <NoteNav />
+          <main> {children}</main>
+        </div>
       </body>
     </html>
   );
 }
-//{`${pretendard.variable} ${geistMono.variable} antialiased`}

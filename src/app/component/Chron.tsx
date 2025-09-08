@@ -2,15 +2,15 @@ import { Post } from "../lib/type";
 
 export default function Chron(post: Post) {
   return (
-    <div className="flex font-pretendard text-sm items-center">
+    <div className="flex font-pretendard items-center">
       {/*가로 여백*/}
-      <div className="w-12 bg-white px-1">
+      <div className="w-10 bg-white px-1">
         {post.chron?.year && post.chron?.year}
       </div>
-      <div className="w-12 bg-white px-1">
+      <div className="w-10 bg-white px-1">
         {post.chron?.month ? `${post.chron.month}월` : ""}
       </div>
-      <div className="w-12 bg-white px-1">
+      <div className="w-10 bg-white px-1">
         {post.chron?.day ? `${post.chron.day}일` : ""}
       </div>
     </div>
