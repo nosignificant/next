@@ -1,15 +1,18 @@
 import { Post } from "../lib/type";
 import Chron from "./Chron";
 import clsx from "clsx";
+import NoteNav from "./NoteNav";
 
 type SideBarProps = { posts: Post[]; handleSelected: (slug: string) => void };
 
 export default function SideBar({ posts, handleSelected }: SideBarProps) {
   return (
     <div
-      className="hidden lg:block w-[300px] text-sm shrink-0 sticky top-20 
-    self-start h-fit font-pretendard text-[0.75rem]"
+      className="hidden lg:block w-[300px] text-sm shrink-0 
+     font-pretendard text-[0.75rem]"
     >
+      {" "}
+      <NoteNav />
       {posts.map((post) => (
         <div
           className={clsx(

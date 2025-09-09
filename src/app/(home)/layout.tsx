@@ -10,9 +10,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="h-[100px]"></div>
-        <HomeNav />
-        <NoteNav />
+        <div className="px-4">
+          <HomeNav />
+        </div>
         <main> {children}</main>
       </body>
     </html>

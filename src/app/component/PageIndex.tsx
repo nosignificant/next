@@ -13,7 +13,8 @@ export default function SideBar({ posts, selected }: PageIndexProps) {
     );
 
   return (
-    <div className="w-[220px] shrink-0 sticky top-20  self-start h-fit">
+    <div className="w-[220px] shrink-0 self-start h-fit">
+      <div className="h-4 "></div>
       {posts.map((post) =>
         post.slug === selected ? (
           <div key={post.slug}>

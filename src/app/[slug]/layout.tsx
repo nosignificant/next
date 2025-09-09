@@ -12,7 +12,7 @@ export default function NoteLayout({
       <body>
         <div className="px-4 sticky top-0 ">
           <HomeNav />
-          <NoteNav />
+
           <main> {children}</main>
         </div>
       </body>

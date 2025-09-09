@@ -38,12 +38,12 @@ export default function StudyPage() {
 
   return (
     <div className="flex flex-col md:flex-row gap-8 py-2 justify-start">
-      <div className="flex flex-col">
+      <div className="flex sticky top-0 self-start h-fit">
         <SideBar posts={posts} handleSelected={handleSelected} />
+        <PageIndex posts={posts} selected={selected} />
       </div>
 
       <div className="flex flex-row gap-4">
-        <PageIndex posts={posts} selected={selected} />
         <Content posts={posts} selected={selected} />
       </div>
     </div>
