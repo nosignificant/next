@@ -1,15 +1,13 @@
 "use client";
 
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
-import Link from "next/link";
 import Image from "next/image";
 import type { Post } from "../lib/type";
 
 import Heading from "./document/Heading";
+import Paragraph from "./document/Paragraph";
+import InLineLink from "./document/InlineLink";
 
 type ContentProps = { posts: Post[]; selected: string };
 
@@ -18,15 +16,9 @@ export default function Content({ posts, selected }: ContentProps) {
   if (!post) return null;
 
   const md = typeof post.content === "string" ? post.content : "";
-
   return (
-    <article className="prose prose-neutral w-[400px] md:w-[600px]">
+    <article className="prose prose-neutral pl-4 md:pr-0 lg:pr-[120px]">
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[
-          rehypeSlug,
-          [rehypeAutolinkHeadings, { behavior: "wrap" }],
-        ]}
         components={{
           h1: (props) => <Heading as="h1" {...props} />,
           h2: (props) => <Heading as="h2" {...props} />,
@@ -34,25 +26,11 @@ export default function Content({ posts, selected }: ContentProps) {
           h4: (props) => <Heading as="h4" {...props} />,
           h5: (props) => <Heading as="h5" {...props} />,
           h6: (props) => <Heading as="h6" {...props} />,
-          p: (props) => <p className="leading-7 my-3" {...props} />,
-          a: ({ href = "", children }) => {
-            const isExternal = /^https?:\/\//i.test(href);
-            return isExternal ? (
-              <a
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                className="underline text-blue-600"
-              >
-                {children}
-              </a>
-            ) : (
-              <Link href={href} className="underline">
-                {children}
-              </Link>
-            );
-          },
-          code: ({ inline, children, ...props }) =>
+          p: (props) => <Paragraph {...props} />,
+          a: ({ href = "", children }) => (
+            <InLineLink href={href}>{children}</InLineLink>
+          ),
+          code: ({ inline, children, ...props }: any) =>
             inline ? (
               <code className="px-1.5 py-0.5 rounded bg-neutral-100">
                 {children}
@@ -64,7 +42,6 @@ export default function Content({ posts, selected }: ContentProps) {
             ),
           img: ({ src = "", alt = "" }) => (
             <span className="block my-4">
-              {/* 정적 호스트가 아니라면 next.config 이미지 도메인 허용 필요 */}
               <Image
                 src={src}
                 alt={alt}
@@ -79,7 +56,7 @@ export default function Content({ posts, selected }: ContentProps) {
           ol: (props) => <ol className="list-decimal pl-6 my-3" {...props} />,
           blockquote: (props) => (
             <blockquote
-              className="border-l-4 pl-4 italic text-neutral-700 my-4"
+              className="border-l-4 pl-4 text-neutral-700 my-4"
               {...props}
             />
           ),
