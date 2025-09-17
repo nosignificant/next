@@ -1,5 +1,7 @@
 import { Post } from "../lib/type";
 import Heading from "./document/Heading";
+import Link from "next/link";
+import { slugify } from "../lib/slugify";
 
 type PageIndexProps = { posts: Post[]; selected: string };
 
@@ -13,17 +15,21 @@ export default function SideBar({ posts, selected }: PageIndexProps) {
       </div>
     );
 
-  function sharpToTitle(post: Post) {
-    const md = typeof post.content === "string" ? post.content : "";
-    const titles: string[] = md
-      .split("\n")
-      .filter((title) => title.includes("#"))
-      .map((title) => title.replace(/^#{1,6}\s*/, "").trim());
-    console.log(titles);
-    return titles;
+  function extractHeadings(md: string) {
+    const lines = md.split("\n").filter((l) => /^#{1,6}\s+/.test(l));
+    const counts = new Map<string, number>();
+
+    return lines.map((raw) => {
+      const text = raw.replace(/^#{1,6}\s*/, "").trim();
+      const base = slugify(text);
+      const n = counts.get(base) ?? 0;
+      counts.set(base, n + 1);
+      const id = n === 0 ? base : `${base}-${n}`;
+      return { text, id };
+    });
   }
 
-  sharpToTitle(post);
+  const headings = extractHeadings(post.content);
 
   return (
     <div className="lg:w-[220px] shrink-0 self-start h-fit px-4 lg:px-0">
@@ -38,9 +44,16 @@ export default function SideBar({ posts, selected }: PageIndexProps) {
               </div>
             </div>
 
-            {sharpToTitle(post).map((title) => (
-              <div key={title} className="text-sm pb-1">
-                {title}
+            {headings.map(({ text, id }) => (
+              <div key={id} className="hover:bg-gray-100 pb-1">
+                <Link
+                  href={`/${post.parent}?slug=${encodeURIComponent(
+                    post.slug
+                  )}#${id}`}
+                  className="text-sm "
+                >
+                  {text}
+                </Link>
               </div>
             ))}
           </div>

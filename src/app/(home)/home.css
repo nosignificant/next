@@ -1,5 +1,5 @@
 body {
-  background-color: #e3e3e3;
+  background-color: #ffffff;
 }
 .mosaic {
   display: grid;
@@ -30,11 +30,4 @@ body {
   background-color: rgb(147, 203, 255);
   transform: scale(var(--sx, 1), var(--sy, 1));
   transform-origin: center center;
-}
-
-/* 텍스트가 넘칠 때 줄바꿈/자르기 옵션(선택) */
-.tile > .content {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
 }

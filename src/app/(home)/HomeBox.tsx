@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import type { Post } from "../lib/type";
 import "./home.css";
 import Link from "next/link";
@@ -12,14 +13,42 @@ type HomeProps = {
   maxDepth?: number;
 };
 
+const colorCode = [
+  "bg-[#7AA4FF]",
+  "bg-[#FF7AAF]",
+  "bg-[#FFE27A]",
+  "bg-[#7A90FF]",
+  "bg-[#BAE0FF]",
+  "bg-[#FFBABA]",
+];
+
 export default function HomeBox({
   posts,
   recursion = 0,
   maxDepth = 4,
 }: HomeProps) {
-  const [size, setSize] = useState({ width: 0, height: 0 });
+  const [isHover, setHover] = useState(false);
   const [putContent, setPutContent] = useState(recursion < 4 ? false : true);
   const [isRow, setIsRow] = useState(recursion < 1 ? true : false);
+
+  useEffect(() => {
+    console.log(isHover);
+  }, [isHover]);
+
+  function handleMouseLeave() {
+    setHover(false);
+  }
+  function handleMouseEnter() {
+    setHover(true);
+  }
+
+  const sizeClasses = [
+    "text-xl",
+    "text-lg",
+    "text-sm",
+    "text-[0.8rem]",
+    "text-[0.75rem]",
+  ];
 
   useEffect(() => {
     setPutContent(recursion < 4 ? Math.random() < 0.5 : true);
@@ -27,6 +56,7 @@ export default function HomeBox({
   }, [recursion]);
   function EmptyBox() {
     const repeatNum = Math.floor(Math.random() * 2 + 1);
+
     return (
       <div
         className={clsx(
@@ -35,9 +65,7 @@ export default function HomeBox({
         )}
       >
         {Array.from({ length: repeatNum }).map((_, i) => (
-          <div key={i} className="bg-blue-500 flex-1 ">
-            a
-          </div>
+          <div key={i} className={clsx(colorCode[recursion], "flex-1")} />
         ))}
       </div>
     );
@@ -54,29 +82,52 @@ export default function HomeBox({
       className={clsx("flex w-full h-full", isRow ? "flex-row" : "flex-col")}
     >
       {/* leaf */}
-      <div className="flex-1 min-w-0 min-h-0 flex items-stretch">
-        {putContent ? (
-          <Link
-            href={`/${current.parent}?slug=${encodeURIComponent(current.slug)}`}
-            className="flex flex-1 items-center justify-center border p-2"
-          >
-            {current.slug}
-          </Link>
-        ) : (
-          <EmptyBox />
-        )}
-      </div>
-
-      {recursion < maxDepth && (
+      <AnimatePresence initial={true}>
+        {" "}
         <div className="flex-1 min-w-0 min-h-0 flex items-stretch">
-          {/* tree */}
-          <HomeBox
-            posts={posts}
-            recursion={recursion + 1}
-            maxDepth={maxDepth}
-          />
+          {putContent ? (
+            <motion.div
+              key={`child-${recursion}`}
+              className="flex-1 min-w-0 min-h-0 flex items-stretch"
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+            >
+              <Link
+                href={`/${current.parent}?slug=${encodeURIComponent(
+                  current.slug
+                )}`}
+                className={`flex flex-1 items-center justify-center p-2 ${sizeClasses[recursion]}`}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                {current.slug}
+              </Link>
+            </motion.div>
+          ) : (
+            <EmptyBox />
+          )}
         </div>
-      )}
+      </AnimatePresence>
+
+      <AnimatePresence initial={false}>
+        {!isHover && recursion < maxDepth && (
+          <motion.div
+            key={`child-${recursion}`}
+            className="flex-1 min-w-0 min-h-0 flex items-stretch"
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+          >
+            {/* tree */}
+            <HomeBox
+              posts={posts}
+              recursion={recursion + 1}
+              maxDepth={maxDepth}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -91,4 +142,6 @@ useEffect: 화면이 그려진 다음, 추가 부수 효과,
   콜백함수를 전달해줘야함 
   window eventlistener은 해제해줘야 중복으로 쌓이지 않음 
 useState: 값이 바뀌면 다시 그림 
+
+ ${sizeClasses[recursion]} 동적으로 계산해서 결정하는 class는 안됨
 */

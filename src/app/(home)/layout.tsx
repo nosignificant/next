@@ -1,6 +1,6 @@
 import HomeNav from "../component/HomeNav";
-import NoteNav from "../component/NoteNav";
 import "../globals.css";
+import aritaD_M from "next/font/local";
 
 export default function RootLayout({
   children,
@@ -9,8 +9,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <div className="px-4">
+      <body className="aritaD_M">
+        <div className="px-4 ">
           <HomeNav />
         </div>
         <main> {children}</main>
