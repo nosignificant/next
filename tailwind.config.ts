@@ -10,7 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        pretendard: [pretendard.variable, "sans-serif"], // 👈 여기 pretendard 키로 등록
+        pretendard: [pretendard.variable, "sans-serif"],
+        aritaD_M: "var(--font-aritaD-medium)",
+        aritaD_SB: "var(--font-aritaD-semibold)",
       },
     },
   },

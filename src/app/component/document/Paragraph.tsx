@@ -9,7 +9,7 @@ type PProps = DetailedHTMLProps<
 export default function Paragraph({ className, ...props }: PProps) {
   return (
     <p
-      className={clsx("text-[0.95rem] leading-[24.5px]", className)}
+      className={clsx("text-[0.85rem] leading-[24.5px]", className)}
       {...props}
     />
   );

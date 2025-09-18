@@ -17,7 +17,7 @@ export default function Content({ posts, selected }: ContentProps) {
 
   const md = typeof post.content === "string" ? post.content : "";
   return (
-    <article className="prose prose-neutral pl-4 md:pr-0 lg:pr-[120px]">
+    <article className="prose prose-neutral pl-4 md:pr-0 lg:pr-[100px]">
       <ReactMarkdown
         components={{
           h1: (props) => <Heading as="h1" {...props} />,
@@ -30,7 +30,7 @@ export default function Content({ posts, selected }: ContentProps) {
           a: ({ href = "", children }) => (
             <InLineLink href={href}>{children}</InLineLink>
           ),
-          code: ({ inline, children, ...props }: any) =>
+          code: ({ inline, children, ...props }) =>
             inline ? (
               <code className="px-1.5 py-0.5 rounded bg-neutral-100">
                 {children}
@@ -52,11 +52,21 @@ export default function Content({ posts, selected }: ContentProps) {
               {alt && <em className="text-sm text-neutral-500">{alt}</em>}
             </span>
           ),
-          ul: (props) => <ul className="list-disc pl-6 my-3" {...props} />,
-          ol: (props) => <ol className="list-decimal pl-6 my-3" {...props} />,
+          ul: (props) => (
+            <ul
+              className="list-disc text-[0.85rem] leading-[24.5px]"
+              {...props}
+            />
+          ),
+          ol: (props) => (
+            <ol
+              className="list-decimal text-[0.85rem] leading-[24.5px]"
+              {...props}
+            />
+          ),
           blockquote: (props) => (
             <blockquote
-              className="border-l-4 pl-4 text-neutral-700 my-4"
+              className="border-l-4 border-gray pl-4 text-neutral-700 my-4"
               {...props}
             />
           ),
@@ -65,6 +75,7 @@ export default function Content({ posts, selected }: ContentProps) {
       >
         {md}
       </ReactMarkdown>
+      <div className="py-[50px]"></div>
     </article>
   );
 }

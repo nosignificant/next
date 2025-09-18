@@ -1,8 +1,7 @@
 import { Post } from "../lib/type";
 import Heading from "./document/Heading";
 import Link from "next/link";
-import { slugify } from "../lib/slugify";
-
+import { extractHeadings } from "../lib/slugify";
 type PageIndexProps = { posts: Post[]; selected: string };
 
 export default function SideBar({ posts, selected }: PageIndexProps) {
@@ -15,24 +14,10 @@ export default function SideBar({ posts, selected }: PageIndexProps) {
       </div>
     );
 
-  function extractHeadings(md: string) {
-    const lines = md.split("\n").filter((l) => /^#{1,6}\s+/.test(l));
-    const counts = new Map<string, number>();
-
-    return lines.map((raw) => {
-      const text = raw.replace(/^#{1,6}\s*/, "").trim();
-      const base = slugify(text);
-      const n = counts.get(base) ?? 0;
-      counts.set(base, n + 1);
-      const id = n === 0 ? base : `${base}-${n}`;
-      return { text, id };
-    });
-  }
-
   const headings = extractHeadings(post.content);
 
   return (
-    <div className="lg:w-[220px] shrink-0 self-start h-fit px-4 lg:px-0">
+    <div className="lg:w-[220px] shrink-0 sticky self-start h-fit px-4 lg:px-0">
       <div className="h-4 "></div>
       {posts.map((post) =>
         post.slug === selected ? (
@@ -45,17 +30,22 @@ export default function SideBar({ posts, selected }: PageIndexProps) {
             </div>
 
             {headings.map(({ text, id }) => (
-              <div key={id} className="hover:bg-gray-100 pb-1">
-                <Link
-                  href={`/${post.parent}?slug=${encodeURIComponent(
-                    post.slug
-                  )}#${id}`}
-                  className="text-sm "
-                >
+              <Link
+                key={id}
+                href={`/${post.parent}?slug=${encodeURIComponent(
+                  post.slug
+                )}#${id}`}
+                className="text-sm "
+              >
+                {/* index */}
+
+                <div className="hover:bg-gray-100 pb-1 hidden lg:block">
                   {text}
-                </Link>
-              </div>
+                </div>
+              </Link>
             ))}
+
+            {/*  small index */}
           </div>
         ) : (
           ""

@@ -29,18 +29,11 @@ export default function HomeBox({
 }: HomeProps) {
   const [isHover, setHover] = useState(false);
   const [putContent, setPutContent] = useState(recursion < 4 ? false : true);
-  const [isRow, setIsRow] = useState(recursion < 1 ? true : false);
+  const [isRow, setIsRow] = useState(recursion < 4 ? true : false);
 
   useEffect(() => {
     console.log(isHover);
   }, [isHover]);
-
-  function handleMouseLeave() {
-    setHover(false);
-  }
-  function handleMouseEnter() {
-    setHover(true);
-  }
 
   const sizeClasses = [
     "text-xl",
@@ -54,6 +47,7 @@ export default function HomeBox({
     setPutContent(recursion < 4 ? Math.random() < 0.5 : true);
     setIsRow(recursion < 1 ? true : Math.random() < 0.5);
   }, [recursion]);
+
   function EmptyBox() {
     const repeatNum = Math.floor(Math.random() * 2 + 1);
 
@@ -98,8 +92,12 @@ export default function HomeBox({
                   current.slug
                 )}`}
                 className={`flex flex-1 items-center justify-center p-2 ${sizeClasses[recursion]}`}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+                onMouseEnter={() => {
+                  setHover(true);
+                }}
+                onMouseLeave={() => {
+                  setHover(false);
+                }}
               >
                 {current.slug}
               </Link>

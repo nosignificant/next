@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import { Post } from "./type";
 import { FP } from "./paths";
 import chronDate from "./chronDate";
+import { slugify } from "./slugify";
 // ==== 설정 ====
 
 // ==== 유틸 함수 ====

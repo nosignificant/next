@@ -1,6 +1,6 @@
 import HomeNav from "../component/HomeNav";
 import "../globals.css";
-import aritaD_M from "next/font/local";
+import { aritaD } from "../lib/localFont";
 
 export default function RootLayout({
   children,
@@ -9,7 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="aritaD_M">
+      <body className={`${aritaD.variable}`}>
         <div className="px-4 ">
           <HomeNav />
         </div>

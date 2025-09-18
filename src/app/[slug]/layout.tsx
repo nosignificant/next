@@ -1,5 +1,7 @@
 import "../globals.css";
+import { aritaD } from "../lib/localFont";
 import NoteNav from "../component/NoteNav";
+
 import HomeNav from "../component/HomeNav";
 
 export default function NoteLayout({
@@ -9,10 +11,10 @@ export default function NoteLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <div className="px-4 sticky top-0 ">
+      <body className={`${aritaD.variable}`}>
+        <div className="px-4">
           <HomeNav />
-
+          <NoteNav />
           <main> {children}</main>
         </div>
       </body>

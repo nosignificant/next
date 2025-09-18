@@ -1,7 +1,6 @@
 import { Post } from "../lib/type";
 import Chron from "./Chron";
 import clsx from "clsx";
-import NoteNav from "./NoteNav";
 
 type SideBarProps = { posts: Post[]; handleSelected: (slug: string) => void };
 
@@ -9,15 +8,14 @@ export default function SideBar({ posts, handleSelected }: SideBarProps) {
   return (
     <div
       className="hidden lg:block w-[300px] text-sm shrink-0 
-     font-pretendard text-[0.75rem]"
+     font-pretendard text-[0.75rem] "
     >
       {" "}
-      <NoteNav />
       {posts.map((post) => (
         <div
           className={clsx(
-            "flex gap-2",
-            post.chron?.border && post.chron?.notfirst && "border-t"
+            "flex gap-2 hover:bg-gray-100 ",
+            post.chron?.border && post.chron?.notfirst && "border-t "
           )}
           key={post.slug}
           onClick={() => handleSelected(post.slug)}
@@ -25,8 +23,7 @@ export default function SideBar({ posts, handleSelected }: SideBarProps) {
           <Chron {...post} />
 
           {/*text nowrap 할까 말까? */}
-          {/*text nowrap 할까 말까? */}
-          <div className="bg-white py-1 px-1 pb-2 w-full text-nowrap overflow-hidden">
+          <div className=" py-[6px] px-1 pb-[6px] w-full text-nowrap overflow-hidden ">
             {post.slug}
           </div>
         </div>

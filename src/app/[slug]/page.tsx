@@ -5,6 +5,8 @@ import SideBar from "../component/SideBar";
 import PageIndex from "../component/PageIndex";
 import Content from "../component/Content";
 import type { Post } from "../lib/type";
+import LittleIndex from "../component/LittleIndex";
+import BottomBar from "../component/BottomBar";
 
 export default function StudyPage() {
   const search = useSearchParams();
@@ -37,15 +39,24 @@ export default function StudyPage() {
   if (loading) return <p>불러오는 중…</p>;
 
   return (
-    <div className="flex flex-col justify-center lg:flex-row gap-8 py-2 lg:justify-start">
-      <div className="flex sticky top-0 self-start h-fit">
+    <div className="flex flex-col justify-center lg:flex-row  lg:justify-start py-2">
+      <div className="flex flex-col lg:flex-row lg:sticky top-0 self-start h-fit gap-8">
         <SideBar posts={posts} handleSelected={handleSelected} />
+        <PageIndex posts={posts} selected={selected} />
       </div>
 
       <div className="flex flex-col lg:flex-row gap-4 w-full">
-        <PageIndex posts={posts} selected={selected} />
+        {" "}
         <Content posts={posts} selected={selected} />
       </div>
+
+      <div className="flex flex-col"></div>
+      <LittleIndex posts={posts} selected={selected} />
+      <BottomBar
+        posts={posts}
+        handleSelected={handleSelected}
+        selected={selected}
+      />
     </div>
   );
 }
