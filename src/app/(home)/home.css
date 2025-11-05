@@ -31,3 +31,25 @@ body {
   transform: scale(var(--sx, 1), var(--sy, 1));
   transform-origin: center center;
 }
+
+/* home.css */
+.clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 보조 유틸(한 줄 말줄임) */
+.ellipsis-1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,12 +1,9 @@
-// src/lib/notes.ts
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { Post } from "./type";
 import { FP } from "./paths";
 import chronDate from "./chronDate";
-import { slugify } from "./slugify";
-// ==== 설정 ====
 
 // ==== 유틸 함수 ====
 
@@ -44,6 +41,7 @@ export function getPostData(reqSlug: string): Post[] {
     const fullPath = path.join(POSTS_PATH, fileName);
     const raw = fs.readFileSync(fullPath, "utf-8");
     const matterResult = matter(raw);
+    const thumbnail = `/img/thumbnail/${slug}.png`;
     const publishedAt = matterResult.data.date
       .toLocaleString("ko-KR")
       .slice(0, 11);
@@ -53,6 +51,7 @@ export function getPostData(reqSlug: string): Post[] {
       excerpt: matterResult.data.excerpt,
       parent: reqSlug,
       publishedAt,
+      thumbnail: thumbnail,
       content: matterResult.content,
       author: null,
       tags: tags,

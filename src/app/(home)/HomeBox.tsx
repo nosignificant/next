@@ -29,7 +29,7 @@ export default function HomeBox({
 }: HomeProps) {
   const [isHover, setHover] = useState(false);
   const [putContent, setPutContent] = useState(recursion < 4 ? false : true);
-  const [isRow, setIsRow] = useState(recursion < 4 ? true : false);
+  const [isRow, setIsRow] = useState(recursion < 1 ? true : false);
 
   useEffect(() => {
     console.log(isHover);
@@ -45,7 +45,6 @@ export default function HomeBox({
 
   useEffect(() => {
     setPutContent(recursion < 4 ? Math.random() < 0.5 : true);
-    setIsRow(recursion < 1 ? true : Math.random() < 0.5);
   }, [recursion]);
 
   function EmptyBox() {
@@ -79,7 +78,7 @@ export default function HomeBox({
       <AnimatePresence initial={true}>
         {" "}
         <div className="flex-1 min-w-0 min-h-0 flex items-stretch">
-          {putContent ? (
+          {recursion < 4 && putContent ? (
             <motion.div
               key={`child-${recursion}`}
               className="flex-1 min-w-0 min-h-0 flex items-stretch"
@@ -91,7 +90,7 @@ export default function HomeBox({
                 href={`/${current.parent}?slug=${encodeURIComponent(
                   current.slug
                 )}`}
-                className={`flex flex-1 items-center justify-center p-2 ${sizeClasses[recursion]}`}
+                className={`flex flex-1 items-center justify-center p-2 overflow-hidden ${sizeClasses[recursion]}`}
                 onMouseEnter={() => {
                   setHover(true);
                 }}

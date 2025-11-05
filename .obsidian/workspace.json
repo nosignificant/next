@@ -1,0 +1,218 @@
+{
+  "main": {
+    "id": "bda7f08ff5c1591e",
+    "type": "split",
+    "children": [
+      {
+        "id": "7da2cc6455e07af9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "56fd96d52e57c6fe",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9126df86047f87a6",
+    "type": "split",
+    "children": [
+      {
+        "id": "18ecdf670f0156e7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3692e1ce2fc226e9",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "5e054beed05aaa35",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "f64a4a400c46cb44",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "a1ca98d8db876418",
+    "type": "split",
+    "children": [
+      {
+        "id": "d0e0baff13f19d65",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3de1e718fbc529ac",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "src/app/content/study/웹 만드는 기록.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 웹 만드는 기록"
+            }
+          },
+          {
+            "id": "146465d2f72d3000",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "src/app/content/study/웹 만드는 기록.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 웹 만드는 기록"
+            }
+          },
+          {
+            "id": "ab6535ca013198d1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "663563b4856a5612",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "src/app/content/study/웹 만드는 기록.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 웹 만드는 기록"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "56fd96d52e57c6fe",
+  "lastOpenFiles": [
+    "src/app/content/note/인류는 생명체다.md",
+    "src/app/content/study/9월 26일.md",
+    "src/app/content/study/만들어진 배열에 정보를 저장하기.md",
+    "src/app/content/study/생물_만들어보기.md",
+    "src/app/content/study/웹 만드는 기록.md",
+    "src/app/lib/parseWork.ts",
+    "node_modules/3d-force-graph/README.md",
+    "node_modules/3d-force-graph/package.json",
+    "node_modules/three/README.md",
+    "node_modules/three/package.json",
+    "node_modules/3d-force-graph/dist/3d-force-graph.mjs",
+    "node_modules/3d-force-graph/dist/3d-force-graph.min.js",
+    "node_modules/3d-force-graph/dist/3d-force-graph.js.map",
+    "node_modules/3d-force-graph/dist/3d-force-graph.js",
+    "node_modules/3d-force-graph/dist/3d-force-graph.d.ts",
+    "node_modules/3d-force-graph/dist",
+    "node_modules/three-render-objects/README.md",
+    "node_modules/polished/docs/assets/fonts/WOFF2/TTF/SourceCodePro-Regular.ttf.woff2",
+    "node_modules/polished/docs/assets/logo.svg",
+    "node_modules/polished/docs/assets/meta.png",
+    "node_modules/polished/docs/assets/GitHub-Mark-Light-64px.png",
+    "node_modules/polished/docs/favicon.png",
+    "node_modules/polished/README.md",
+    "node_modules/polished/LICENSE.md",
+    "node_modules/three/src/nodes/materialx/DISCLAIMER.md",
+    "node_modules/ngraph.forcelayout/README.md",
+    "node_modules/ngraph.forcelayout/Changelog.md",
+    "node_modules/three-forcegraph/README.md",
+    "node_modules/lodash-es/release.md",
+    "node_modules/lodash-es/README.md",
+    "node_modules/preact/README.md",
+    "node_modules/ngraph.forcelayout/perf/experimental/README.md",
+    "node_modules/tinycolor2/README.md",
+    "node_modules/react-kapsule/README.md",
+    "node_modules/3d-force-graph/example/img-nodes/imgs/elephant.jpg",
+    "node_modules/3d-force-graph/example/img-nodes/imgs/dog.jpg",
+    "node_modules/3d-force-graph/example/img-nodes/imgs/whale.jpg",
+    "node_modules/3d-force-graph/example/img-nodes/imgs/tiger.jpg",
+    "node_modules/3d-force-graph/example/img-nodes/imgs/squirrel.jpg",
+    "node_modules/3d-force-graph/example/img-nodes/imgs/panda.jpg",
+    "node_modules/three/examples/jsm/libs/draco/README.md",
+    "node_modules/three/examples/jsm/libs/basis/README.md",
+    "node_modules/three/examples/fonts/ttf/README.md",
+    "node_modules/three/examples/fonts/README.md",
+    "node_modules/d3-array/README.md",
+    "node_modules/accessor-fn/README.md"
+  ]
+}

@@ -11,7 +11,7 @@ import BottomBar from "../component/BottomBar";
 export default function StudyPage() {
   const search = useSearchParams();
   const router = useRouter();
-  const pathname = usePathname(); // 예: "/note", "/study"
+  const pathname = usePathname();
   const initialSlug = search.get("slug") ?? "";
 
   const [posts, setPosts] = useState<Post[]>([]);
