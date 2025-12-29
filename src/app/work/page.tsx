@@ -53,7 +53,7 @@ export default function WorkPage() {
       </div>
 
 {/* ✅ 개선된 자유 정렬 레이아웃 */}
-      <div className="flex flex-wrap items-end gap-x-8 gap-y-20 px-4">
+      <div className="flex flex-wrap items-end gap-x-8 gap-y-20 ">
         {filteredWorks.map((work) => (
           <div 
             key={work.slug} 
