@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link"; // 1. Link 가져오기
 import type { Post } from "../lib/type";
 import Chron from "./Chron";
 import clsx from "clsx";
@@ -14,24 +15,20 @@ export default function PostList({ posts, handleSelected, selected }: PostListPr
   return (
     <div className="flex flex-col text-sm font-pretendard pr-4">
       {posts.map((post, index) => {
-        // 1. 현재 날짜
         const currentYear = post.publishedAt.substring(0, 4);
         const currentMonth = post.publishedAt.substring(5, 7);
 
-        // 2. 윗 놈(이전 포스트) 날짜 가져오기
         const prevPost = posts[index - 1];
         const prevYear = prevPost ? prevPost.publishedAt.substring(0, 4) : null;
         const prevMonth = prevPost ? prevPost.publishedAt.substring(5, 7) : null;
 
-        // 3. 비교 (윗 놈이랑 다르면 true, 같으면 false)
-        // - 첫번째 놈(!prevPost)이면 무조건 보여줌
         const showYear = !prevPost || currentYear !== prevYear;
         const showMonth = !prevPost || currentYear !== prevYear || currentMonth !== prevMonth;
 
         return (
-          <button
+          <Link
             key={post.slug}
-            onClick={() => handleSelected(post.slug)}
+            href={`/${post.slug}`} 
             className={clsx(
               "flex items-center gap-2 w-full text-left py-1.5 px-2 rounded-md transition-colors",
               "hover:bg-neutral-50",
@@ -39,6 +36,8 @@ export default function PostList({ posts, handleSelected, selected }: PostListPr
                 ? "bg-neutral-100 font-medium text-black" 
                 : "text-neutral-600"
             )}
+
+            onClick={() => handleSelected(post.slug)} 
           >
             {/* 날짜 박스 */}
             <div className="shrink-0 opacity-80 scale-95 origin-left">
@@ -53,7 +52,7 @@ export default function PostList({ posts, handleSelected, selected }: PostListPr
             <div className="truncate w-full text-[13px] pt-[1px]">
               {post.slug} 
             </div>
-          </button>
+          </Link>
         );
       })}
     </div>
