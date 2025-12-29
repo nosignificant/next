@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo, use } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import type { Post } from "../lib/type";
 
 import PostList from "../component/PostList";
@@ -12,15 +12,18 @@ import BottomBar from "../component/BottomBar";
 import TagFilter from "../component/TagFilter";
 
 export default function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+
   const router = useRouter();
-  
+  const searchParams = useSearchParams(); 
+
   const { slug } = use(params);
   const currentSlug = decodeURIComponent(slug);
 
   const [allPosts, setAllPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState(currentSlug);
-  const [filterTag, setFilterTag] = useState(""); 
+
+  const filterTag = searchParams.get("tag") || "";
 
   useEffect(() => {
     Promise.all([
@@ -37,12 +40,22 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
 
   useEffect(() => {
     setSelected(currentSlug);
-    setFilterTag("");
   }, [currentSlug]);
+
+  const setFilterTag = (tag: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (tag) {
+      params.set("tag", tag);
+    } else {
+      params.delete("tag");
+    }
+    router.replace(`/${selected}?${params.toString()}`, { scroll: false });
+  };
 
   const handleSelected = (newSlug: string) => {
     setSelected(newSlug);
-    router.push(`/${newSlug}`);
+    const tagParam = filterTag ? `?tag=${filterTag}` : "";
+    router.push(`/${newSlug}${tagParam}`);
   };
 
   const currentPost = allPosts.find((p) => p.slug === selected);

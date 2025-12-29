@@ -32,7 +32,6 @@ export default function TagFilter({ tags, selectedTag, onSelect }: TagFilterProp
           All
         </button>
 
-        {/* 개별 태그 버튼들 (여기서 # 제거함) */}
         {visibleTags.map((tag) => (
           <button
             key={tag}

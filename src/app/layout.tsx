@@ -25,7 +25,7 @@ export default function RootLayout({
             {children}
           </main>
           
-          <footer className="py-10 text-center text-sm text-neutral-400 mt-20">
+          <footer className="py-10 text-center text-sm text-neutral-400 mb-10">
             © 2025 雲散霧消. All rights reserved.
           </footer>
         </div>

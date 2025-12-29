@@ -3,7 +3,6 @@ import path from "path";
 import matter from "gray-matter";
 import { Post } from "./type";
 import { FP } from "./paths";
-import chronDate from "./chronDate";
 
 // ==== 유틸 함수 ====
 
@@ -33,7 +32,6 @@ export function getPostData(reqSlug: string): Post[] {
     .filter((name) => /\.(md|mdx)$/i.test(name));
 
   const allPostsData = posts.map((fileName) => {
-    //console.log("fileName", fileName);
     const id = fileName.replace(/\.md$/, "");
     const slug = titleFromSlug(id);
     const fullPath = path.join(POSTS_PATH, fileName);
@@ -53,8 +51,8 @@ export function getPostData(reqSlug: string): Post[] {
       content: matterResult.content,
       author: null,
       tags: tags,
-      chron: null,
     };
   });
-  return chronDate(allPostsData);
-}
+return allPostsData.sort((a, b) => 
+    (a.publishedAt > b.publishedAt ? -1 : 1)
+  );}

@@ -13,7 +13,7 @@ export default function NoteNav() {
   ];
 
   return (
-    <nav className="flex gap-6 text-sm font-medium text-neutral-500 mt-[50px]">
+    <nav className="flex gap-6 text-sm font-medium text-neutral-500">
       {links.map((link) => (
         <Link
           key={link.href}

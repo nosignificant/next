@@ -38,58 +38,9 @@ function parsePostFile(fileName: string, dirPath: string, category: string): Pos
     publishedAt,
     tags: parseTag(data.tags),
     thumbnail,
-    chron: null, // 아래 calculateChron에서 계산
   };
 }
 
-function calculateChron(posts: Post[]): Post[] {
-  // 1. 최신순 정렬
-  const sorted = posts.sort((a, b) => 
-    new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
-
-  return sorted.map((post, index) => {
-    const prevPost = sorted[index - 1];
-    
-    const [year, month, day] = post.publishedAt.split("-");
-    
-    let displayYear = year;
-    let displayMonth = month;
-    let displayDay = day;
-    let border = false;
-
-    if (index === 0) {
-      border = true;
-    } else if (prevPost) {
-      const [prevYear, prevMonth, prevDay] = prevPost.publishedAt.split("-");
-
-      if (year === prevYear) {
-        displayYear = ""; 
-        
-        if (month === prevMonth) {
-          displayMonth = "";
-
-          if (day === prevDay) {
-            displayDay = "";
-          }
-        }
-      } else {
-        border = true;
-      }
-    }
-
-    return {
-      ...post,
-      chron: {
-        year: displayYear,
-        month: displayMonth,
-        day: displayDay,
-        border: border,
-        notfirst: !displayYear, 
-      },
-    };
-  });
-}
 
 // ==== API 함수들 ====
 
@@ -101,8 +52,9 @@ export function getAllPosts(): Post[] {
   const posts = files
     .filter((file) => /\.mdx?$/.test(file))
     .map((file) => parsePostFile(file, dirPath, "note"));
-
-  return calculateChron(posts);
+  
+  // ✅ 여기가 문제였습니다. return을 추가하고 날짜순 정렬했습니다.
+  return posts.sort((a, b) => (a.publishedAt > b.publishedAt ? -1 : 1));
 }
 
 export function getWorks(): Post[] {
@@ -114,7 +66,8 @@ export function getWorks(): Post[] {
     .filter((file) => /\.mdx?$/.test(file))
     .map((file) => parsePostFile(file, dirPath, "work"));
 
-  return calculateChron(posts);
+  // ✅ 여기도 return 추가
+  return posts.sort((a, b) => (a.publishedAt > b.publishedAt ? -1 : 1));
 }
 
 export function getPostBySlug(slug: string): Post | null {

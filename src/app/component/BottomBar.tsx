@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import clsx from "clsx";
 import type { Post } from "../lib/type";
 import PostList from "./PostList";
 import TagFilter from "./TagFilter";
 
 type MobileBottomSheetProps = {
-  posts: Post[];
+  posts: Post[];         // 전체 posts (필터링 전)
   selected?: string;
   handleSelected: (slug: string) => void;
   tags: string[];
@@ -19,13 +19,12 @@ export default function BottomBar({
   posts,
   selected,
   handleSelected,
-  tags,         // ✅ 추가됨
-  selectedTag,  // ✅ 추가됨
-  onSelect,     // ✅ 추가됨
+  tags,
+  selectedTag,
+  onSelect,
 }: MobileBottomSheetProps) {
   const [open, setOpen] = useState(false);
 
-  // 스크롤 잠금
   useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
@@ -35,9 +34,16 @@ export default function BottomBar({
     };
   }, [open]);
 
-  const current = selected ? posts.find((p) => p.slug === selected) : undefined;
 
-  // 리스트 아이템 클릭 시: 페이지 이동 + 닫기
+  const current = useMemo(() => 
+    selected ? posts.find((p) => p.slug === selected) : undefined
+  , [posts, selected]);
+
+  const filteredPosts = useMemo(() => {
+    if (!selectedTag || selectedTag === "All") return posts;
+    return posts.filter((post) => post.tags.includes(selectedTag));
+  }, [posts, selectedTag]);
+
   const onPick = (slug: string) => {
     handleSelected(slug);
     setOpen(false);
@@ -45,70 +51,70 @@ export default function BottomBar({
 
   return (
     <>
-      {/* 하단 플로팅 트리거 버튼 */}
-      <div className="fixed bottom-0 inset-x-0 z-40 bg-white border-t border-neutral-200 lg:hidden">
+      {/* 하단 트리거 바 */}
+      <div className="fixed bottom-0 inset-x-0 z-40 bg-white lg:hidden">
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="w-full py-4 text-sm font-medium flex items-center justify-center gap-2 active:bg-neutral-50"
-          aria-expanded={open}
-          aria-controls="mobile-post-list"
+          className="w-full py-4 px-6 text-sm font-medium flex items-center justify-between active:bg-neutral-50"
         >
-          <span className="truncate max-w-[200px]">
-            {current ? current.slug : "목록"}
+          <span className="truncate flex-1 text-left">
+            {current ? current.slug : "목록을 선택하세요"}
+          </span>
+          <span className="text-neutral-400 text-xs shrink-0 ml-2">
+            {open ? "닫기" : "열기"}
           </span>
         </button>
       </div>
 
-      {/* 딤(배경) - 바텀시트 열렸을 때만 */}
+      {/* 배경 (Dim) */}
       {open && (
         <div
-          className="fixed inset-0 bg-black/30 lg:hidden z-50"
+          className="fixed inset-0 bg-black/40 lg:hidden z-50 transition-opacity"
           onClick={() => setOpen(false)}
         />
       )}
 
-      {/* 바텀시트 */}
+      {/* 바텀시트 컨테이너 */}
       <div
         id="mobile-post-list"
         className={clsx(
-          "fixed inset-x-0 bottom-0 lg:hidden z-[60] bg-white rounded-t-xl shadow-2xl overflow-hidden",
-          "transition-transform duration-300 ease-out",
+          "fixed inset-x-0 bottom-0 lg:hidden z-[60] bg-white rounded-t-2xl shadow-2xl transition-transform duration-300 ease-in-out",
           open ? "translate-y-0" : "translate-y-full"
         )}
-        style={{ maxHeight: "80vh" }} // 최대 높이 제한
       >
-        {/* 헤더 (선택 사항: 닫기 핸들 등) */}
-        <div className="flex justify-center pt-3 pb-1" onClick={() => setOpen(false)}>
-          <div className="w-10 h-1 bg-neutral-200 rounded-full" />
+        {/* 상단 핸들 */}
+        <div 
+          className="flex justify-center py-4 cursor-pointer" 
+          onClick={() => setOpen(false)}
+        >
+          <div className="w-12 h-1.5 bg-neutral-200 rounded-full" />
         </div>
 
-        <div className="px-4 py-2 border-b border-neutral-50">
+        {/* 태그 필터 영역 */}
+        <div className="px-4 pb-4 border-b border-neutral-100">
           <TagFilter 
             tags={tags} 
             selectedTag={selectedTag} 
-            onSelect={onSelect} 
+            onSelect={(tag) => {
+              onSelect(tag);
+            }} 
           />
         </div>
         
-        {/* ✅ 목록 영역: PostList 컴포넌트 재사용 */}
-        {/* PostList에 onPick을 전달하여 클릭 시 닫히도록 함 */}
-        <div className="h-full max-h-[60vh] overflow-y-auto px-4 pb-8">
-          <PostList 
-            posts={posts} 
-            selected={selected} 
-            handleSelected={onPick} 
-          />
-        </div>
-
-        {/* 하단 닫기 버튼 (옵션) */}
-        <div className="p-4 border-t border-neutral-100 bg-white">
-          <button
-            onClick={() => setOpen(false)}
-            className="w-full bg-black text-white py-3 text-sm font-medium rounded-none"
-          >
-            닫기
-          </button>
+        {/* 포스트 리스트 영역 */}
+        <div className="overflow-y-auto px-2 pt-2 pb-10" style={{ maxHeight: "60vh" }}>
+          {filteredPosts.length > 0 ? (
+            <PostList 
+              posts={filteredPosts} 
+              selected={selected} 
+              handleSelected={onPick} 
+            />
+          ) : (
+            <div className="py-20 text-center text-neutral-400 text-sm">
+              해당 태그의 프로젝트가 없습니다.
+            </div>
+          )}
         </div>
       </div>
     </>
