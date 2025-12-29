@@ -83,8 +83,8 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
       {/* Grid 레이아웃 */}
       <div className="hidden md:grid min-h-screen items-start gap-6 xl:gap-12
         md:grid-cols-[280px_1fr_40px]
-        lg:grid-cols-[320px_1fr_300px]
-        xl:grid-cols-[380px_1fr_320px]"
+        lg:grid-cols-[320px_1fr_330px]
+        xl:grid-cols-[380px_1fr_250px]"
       >
         
         {/* [왼쪽] 사이드바 */}
