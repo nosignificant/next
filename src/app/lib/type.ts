@@ -6,13 +6,11 @@ export type Post = {
   publishedAt: string;
   content: string;
   tags: string[];
-  chron: {
+  chron?: { 
     year?: string;
     month?: string;
     day?: string;
-    border?: boolean;
-    notfirst?: boolean;
-  } | null;
+  };
 };
 
 export type FormattedText = {
