@@ -15,7 +15,7 @@ export default function LittleIndex({ posts, selected }: PageIndexProps) {
   return (
     <div className="flex items-end justify-end">
       <button
-        className="absolute top-[70%] left-[90%] fixed lg:hidden hover:bg-gray-100"
+        className="absolute bottom-[10%] left-[90%] fixed lg:hidden hover:bg-gray-100 backdrop-blur-sm"
         onClick={() => {
           setOpen((prev) => !prev);
         }}
@@ -35,7 +35,7 @@ export default function LittleIndex({ posts, selected }: PageIndexProps) {
             ))}
           </div>
         )}
-        {isOpen ? "-" : "index"}
+        {isOpen ? "닫기" : "index"}
       </button>
     </div>
   );

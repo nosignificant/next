@@ -4,41 +4,41 @@ import React from "react";
 export default function InlineText({ text }: { text: FormattedText }) {
   const styles: string[] = [];
 
-  if (text.bold) styles.push("font-pretendard font-bold");
+  // 1. 기본 스타일
+  if (text.bold) styles.push("font-bold text-black");
   if (text.italic) styles.push("italic");
-  if (text.underline)
+  if (text.underline) styles.push("underline underline-offset-4 decoration-neutral-300");
+  if (text.strikethrough) styles.push("line-through decoration-neutral-400 text-neutral-400");
+  
+  // 2. 코드 스타일 수정 (못생긴 검은 배경 제거, 사이즈 축소)
+  if (text.code) {
     styles.push(
-      "underline underline-offset-6 decoration-text-900 decoration-[1px]"
+      "text-xs font-mono text-pink-600 bg-neutral-100 rounded px-1.5 py-0.5 mx-0.5 align-middle tracking-tight"
     );
-  if (text.strikethrough)
-    styles.push("line-through decoration-text-900 decoration-[1px]");
-  if (text.code)
-    styles.push(
-      "text-sm font-mono bg-button-100 rounded-sm px-[5px] py-[2px] border border-text-600 mx-1"
-    );
-  if (text.keyboard) styles.push("text-sm font-mono px-2 py-1");
-  if (text.subscript) styles.push("text-[0.7rem] align-0");
-  if (text.superscript) styles.push("text-[0.7rem] align-[9px]");
+  }
+
+  // 3. 기타 스타일
+  if (text.keyboard) styles.push("text-xs font-mono bg-neutral-100 border border-b-2 border-neutral-200 rounded px-1.5 py-0.5 mx-0.5");
+  if (text.subscript) styles.push("text-[10px] align-sub");
+  if (text.superscript) styles.push("text-[10px] align-super");
 
   const style = styles.join(" ");
 
+  // 렌더링 (Hydration Error 방지를 위해 시맨틱 태그 유지하되 inline 속성 확인)
   if (text.code) {
-    return <code className={`inline ${style}`}>{text.text}</code>;
+    return <code className={style}>{text.text}</code>;
   } else if (text.subscript) {
-    return <sub className={`inline ${style}`}>{text.text}</sub>;
+    return <sub className={style}>{text.text}</sub>;
   } else if (text.superscript) {
-    return <sup className={`inline ${style}`}>{text.text}</sup>;
+    return <sup className={style}>{text.text}</sup>;
   } else if (text.bold) {
-    return <b className={`inline ${style}`}>{text.text}</b>;
+    return <strong className={style}>{text.text}</strong>;
   } else if (text.italic) {
-    return <i className={`inline ${style}`}>{text.text}</i>;
-  } else if (text.underline) {
-    return <u className={`inline ${style}`}>{text.text}</u>;
-  } else if (text.strikethrough) {
-    return <u className={`inline ${style}`}>{text.text}</u>;
+    return <em className={style}>{text.text}</em>;
   } else if (text.keyboard) {
-    return <kbd className={`inline ${style}`}>{text.text}</kbd>;
+    return <kbd className={style}>{text.text}</kbd>;
   } else {
-    return <span className={`inline ${style}`}>{text.text}</span>;
+    // underline, strikethrough 등은 span으로 처리
+    return <span className={style}>{text.text}</span>;
   }
 }

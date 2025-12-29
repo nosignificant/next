@@ -1,114 +1,101 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
 
-import { forGraphData } from "../lib/parseWork";
+import { useState, useEffect, useMemo } from "react";
+import Link from "next/link";
+import clsx from "clsx";
 import type { Post } from "../lib/type";
 
-import React from "react";
-import Content from "../component/Content";
-import WorkGraph from "../component/graph/WorkGraph";
-import HomeNav from "../component/HomeNav";
-import Heading from "../component/document/Heading";
-
-export default function StudyPage() {
-  const search = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
-  const initialSlug = search.get("slug") ?? "";
-
-  const [posts, setPosts] = useState<Post[]>([]);
+export default function WorkPage() {
+  const [works, setWorks] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selected, setSelected] = useState(initialSlug);
+  const [filterTag, setFilterTag] = useState("All");
 
   useEffect(() => {
-    fetch(`/api${pathname}`)
+    fetch("/api/work")
       .then((res) => res.json())
-      .then((data) => setPosts(Array.isArray(data) ? data : []))
+      .then((data) => setWorks(Array.isArray(data) ? data : []))
+      .catch((err) => console.error(err))
       .finally(() => setLoading(false));
-  }, [pathname]);
+  }, []);
 
-  useEffect(() => {
-    setSelected(initialSlug);
-  }, [initialSlug]);
+  const allTags = useMemo(() => {
+    const tags = new Set<string>();
+    works.forEach((p) => p.tags.forEach((t) => tags.add(t)));
+    return ["All", ...Array.from(tags).sort()];
+  }, [works]);
 
-  const handleSelected = (slug: string) => {
-    setSelected(slug);
-    router.replace(`${pathname}?slug=${encodeURIComponent(slug)}`, {
-      scroll: false,
-    });
-  };
+  const filteredWorks = filterTag === "All"
+    ? works
+    : works.filter((p) => p.tags.includes(filterTag));
 
-  const sortedNode = forGraphData(posts);
-
-  if (loading) return <p className="p-6">불러오는 중…</p>;
+  if (loading) return <div className="p-4 text-neutral-400 text-xs">Loading...</div>;
 
   return (
-    <div className="relative min-h-screen">
-      <HomeNav />
+    <div className="pb-20">
+      
+      {/* 상단: 타이틀 & 필터 */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 px-1">
+        <h1 className="text-2xl font-bold">Work</h1>
 
-      {/* 그래프: 내비 아래부터 꽉 채우기 */}
-      <div className="fixed left-0 right-0 bottom-0 z-0">
-        <WorkGraph sortedNode={sortedNode} handleSelected={handleSelected} />
+        <div className="flex flex-wrap gap-2">
+          {allTags.map((tag) => (
+            <button
+              key={tag}
+              onClick={() => setFilterTag(tag)}
+              className={clsx(
+                "text-xs",
+                filterTag === tag ? "font-bold text-black" : "text-neutral-400"
+              )}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* 사이드 패널 + 백드롭 */}
-      <AnimatePresence>
-        {!!selected && (
-          <>
-            {/* 백드롭: 내비 아래 영역만 덮기 (nav는 클릭 가능) */}
-            <motion.button
-              aria-label="close panel backdrop"
-              className="fixed left-0 right-0 top-0 bottom-0 z-[20] bg-black/30 backdrop-blur-[1px]"
-              onClick={() => {
-                setSelected("");
-                router.replace(pathname, { scroll: false });
-              }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            />
-
-            {/* 패널 */}
-            <motion.aside
-              className="
-                fixed right-0 top-0 bottom-0 z-[25]   /* ⬅️ top/bottom으로 높이 고정 */
-                w-full sm:w-[420px] md:w-[480px] lg:w-[520px]
-                bg-white shadow-2xl border-l border-neutral-200
-                flex flex-col
-                max-h-screen                             /* ⬅️ iOS 대비 */
-              "
-              role="dialog"
-              aria-modal="true"
-              aria-label="Post detail"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 26, stiffness: 260 }}
-            >
-              {/* 헤더: 수축 금지 */}
-              <div className="sticky top-0 z-10 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70 shrink-0">
-                <div className="flex items-center gap-3 px-4 py-1">
-                  <div className="min-w-0 flex-1">
-                    <Heading className="truncate">{selected}</Heading>
-                  </div>
+      {/* 카드 그리드: 장식 제거, 이미지+텍스트만 배치 */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-10">
+        
+        {filteredWorks.map((work) => (
+          <Link
+            key={work.slug}
+            href={`/${work.slug}`}
+            className="group block"
+          >
+            {/* 1. 썸네일 이미지 (단순 사각형) */}
+            <div className="aspect-square w-full bg-neutral-100 mb-3 overflow-hidden">
+              {work.thumbnail ? (
+                <img
+                  src={work.thumbnail}
+                  alt={work.slug}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-neutral-300 text-xs">
+                  NO IMAGE
                 </div>
-              </div>
+              )}
+            </div>
 
-              {/* 본문 스크롤 영역 */}
-              <div
-                className="
-                  flex-1 min-h-0 overflow-y-auto px-4 py-4  /* ⬅️ min-h-0 필수 */
-                  overscroll-contain                         /* ⬅️ iOS 바운스 방지(선택) */
-                "
-              >
-                <Content selected={selected} posts={posts} />
-              </div>
-            </motion.aside>
-          </>
-        )}
-      </AnimatePresence>
+            {/* 2. 텍스트 정보 (제목 + 연도) */}
+            <div className="flex justify-between items-baseline px-1">
+              <h2 className="text-sm font-medium text-black decoration-neutral-400 truncate pr-4">
+                {work.slug}
+              </h2>
+              
+              <span className="text-xs text-neutral-400 font-mono shrink-0">
+                {work.chron?.year || work.publishedAt.substring(0, 4)}
+              </span>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      {filteredWorks.length === 0 && (
+        <div className="py-20 text-center text-neutral-400 text-sm">
+          Empty.
+        </div>
+      )}
     </div>
   );
 }

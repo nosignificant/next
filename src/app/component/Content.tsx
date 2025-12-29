@@ -17,7 +17,7 @@ export default function Content({ posts, selected }: ContentProps) {
 
   const md = typeof post.content === "string" ? post.content : "";
   return (
-    <article className="prose prose-neutral pl-4 md:pr-0 lg:pr-[100px]">
+    <article className="prose prose-neutral px-4 md:pr-0">
       <ReactMarkdown
         components={{
           h1: (props) => <Heading as="h1" {...props} />,

@@ -10,18 +10,22 @@ export default function InlineLink({ href, children }: IProps) {
   const isExternal = /^https?:\/\//i.test(href);
 
   return isExternal ? (
-    <div className="hover:bg-gray-100 inline-flex px-1">
+    // ✅ div -> span으로 변경 (Hydration Error 해결)
+    <span className="hover:bg-neutral-100 inline-flex items-center rounded px-1 transition-colors">
       <a
         href={href}
         target="_blank"
         rel="noreferrer"
-        className="text-gray-700 underline-none "
+        className="text-neutral-600 underline decoration-neutral-300 underline-offset-4 hover:text-black transition-colors"
       >
         {children}
       </a>
-    </div>
+    </span>
   ) : (
-    <Link href={href} className="underline">
+    <Link 
+      href={href} 
+      className="text-neutral-800 underline decoration-neutral-300 underline-offset-4 hover:bg-neutral-100 transition-colors px-0.5 rounded"
+    >
       {children}
     </Link>
   );

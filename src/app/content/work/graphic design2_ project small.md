@@ -1,7 +1,7 @@
 ---
-date: 2025-06-24
+date: 2023-06-23
 tags:
-  - web development
+  - editorial
 ---
 
 #### 기획

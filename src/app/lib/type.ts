@@ -42,15 +42,4 @@ export type ParagraphNode = {
   children: TextNode[];
 };
 
-export type GNode = {
-  id: string;
-  slug: string;
-  label: string;
-  type: "tag" | "post";
-  thumbnail?: string;
-  parent?: string;
-};
 
-export type GLink = { source: string; target: string };
-
-export type GData = { nodes: GNode[]; links: GLink[] };

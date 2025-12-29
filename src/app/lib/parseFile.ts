@@ -21,8 +21,6 @@ function parseTag(arr: string[]): string[] {
 export function getPostData(reqSlug: string): Post[] {
   let base_path = "";
   if (reqSlug === "note") base_path = FP.NOTE_PATH;
-  else if (reqSlug === "study") base_path = FP.STUDY_PATH;
-  else if (reqSlug === "read") base_path = FP.READ_PATH;
   else if (reqSlug === "work") base_path = FP.WORK_PATH;
   if (!base_path) return [];
 

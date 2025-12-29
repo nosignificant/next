@@ -1,7 +1,7 @@
 ---
-date: 2025-06-24
+date: 2024-11-24
 tags:
-  - web development
+  - unity
 ---
 
 #### 제작 과정

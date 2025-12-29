@@ -3,22 +3,29 @@
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import type { Post } from "../lib/type";
-import Chron from "./Chron";
+import PostList from "./PostList";
+import TagFilter from "./TagFilter";
 
 type MobileBottomSheetProps = {
   posts: Post[];
   selected?: string;
   handleSelected: (slug: string) => void;
+  tags: string[];
+  selectedTag: string;
+  onSelect: (tag: string) => void;
 };
 
 export default function BottomBar({
   posts,
   selected,
   handleSelected,
+  tags,         // ✅ 추가됨
+  selectedTag,  // ✅ 추가됨
+  onSelect,     // ✅ 추가됨
 }: MobileBottomSheetProps) {
   const [open, setOpen] = useState(false);
 
-  // 스크롤 잠금 (선택)
+  // 스크롤 잠금
   useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
@@ -30,6 +37,7 @@ export default function BottomBar({
 
   const current = selected ? posts.find((p) => p.slug === selected) : undefined;
 
+  // 리스트 아이템 클릭 시: 페이지 이동 + 닫기
   const onPick = (slug: string) => {
     handleSelected(slug);
     setOpen(false);
@@ -38,23 +46,24 @@ export default function BottomBar({
   return (
     <>
       {/* 하단 플로팅 트리거 버튼 */}
-      <div className="fixed bottom-4 inset-x-0 px-4 lg:hidden z-40">
+      <div className="fixed bottom-0 inset-x-0 z-40 bg-white border-t border-neutral-200 lg:hidden">
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="w-full rounded-full bg-black text-white py-3 text-sm shadow-md active:opacity-90"
+          className="w-full py-4 text-sm font-medium flex items-center justify-center gap-2 active:bg-neutral-50"
           aria-expanded={open}
           aria-controls="mobile-post-list"
         >
-          {current ? `${current.slug}` : "목록"}
+          <span className="truncate max-w-[200px]">
+            {current ? current.slug : "목록"}
+          </span>
         </button>
       </div>
 
-      {/* 딤(배경) */}
+      {/* 딤(배경) - 바텀시트 열렸을 때만 */}
       {open && (
-        <button
-          className="fixed inset-0 bg-black/30 lg:hidden z-40"
-          aria-label="close overlay"
+        <div
+          className="fixed inset-0 bg-black/30 lg:hidden z-50"
           onClick={() => setOpen(false)}
         />
       )}
@@ -63,54 +72,43 @@ export default function BottomBar({
       <div
         id="mobile-post-list"
         className={clsx(
-          "fixed inset-x-0 bottom-0 lg:hidden z-50",
+          "fixed inset-x-0 bottom-0 lg:hidden z-[60] bg-white rounded-t-xl shadow-2xl overflow-hidden",
           "transition-transform duration-300 ease-out",
           open ? "translate-y-0" : "translate-y-full"
         )}
-        role="dialog"
-        aria-modal="true"
+        style={{ maxHeight: "80vh" }} // 최대 높이 제한
       >
-        <div className="mx-auto w-full max-w-screen-sm rounded-t-2xl bg-white shadow-2xl">
-          {/* 그립/헤더 */}
-          <div className="pt-3 pb-2 flex items-center justify-center">
-            <span className="h-1.5 w-12 rounded-full bg-neutral-300" />
-          </div>
+        {/* 헤더 (선택 사항: 닫기 핸들 등) */}
+        <div className="flex justify-center pt-3 pb-1" onClick={() => setOpen(false)}>
+          <div className="w-10 h-1 bg-neutral-200 rounded-full" />
+        </div>
 
-          {/* 현재 선택 표시(있으면) */}
-          {current && (
-            <div className="px-4 pb-2 text-xs text-neutral-500">
-              현재: {current.slug}
-            </div>
-          )}
+        <div className="px-4 py-2 border-b border-neutral-50">
+          <TagFilter 
+            tags={tags} 
+            selectedTag={selectedTag} 
+            onSelect={onSelect} 
+          />
+        </div>
+        
+        {/* ✅ 목록 영역: PostList 컴포넌트 재사용 */}
+        {/* PostList에 onPick을 전달하여 클릭 시 닫히도록 함 */}
+        <div className="h-full max-h-[60vh] overflow-y-auto px-4 pb-8">
+          <PostList 
+            posts={posts} 
+            selected={selected} 
+            handleSelected={onPick} 
+          />
+        </div>
 
-          {/* 목록 */}
-          <div className="max-h-[60vh] overflow-y-auto px-2 pb-3">
-            {posts.map((post) => (
-              <button
-                key={post.slug}
-                onClick={() => onPick(post.slug)}
-                className={clsx(
-                  "w-full flex gap-3 items-center px-2 py-2 rounded hover:bg-neutral-100 active:bg-neutral-200",
-                  selected === post.slug && "bg-neutral-100"
-                )}
-              >
-                <div className="shrink-0">
-                  <Chron {...post} />
-                </div>
-                <div className="text-left text-sm truncate">{post.slug}</div>
-              </button>
-            ))}
-          </div>
-
-          {/* 닫기 버튼 */}
-          <div className="p-3">
-            <button
-              onClick={() => setOpen(false)}
-              className="w-full rounded-md border border-neutral-300 py-2 text-sm"
-            >
-              닫기
-            </button>
-          </div>
+        {/* 하단 닫기 버튼 (옵션) */}
+        <div className="p-4 border-t border-neutral-100 bg-white">
+          <button
+            onClick={() => setOpen(false)}
+            className="w-full bg-black text-white py-3 text-sm font-medium rounded-none"
+          >
+            닫기
+          </button>
         </div>
       </div>
     </>

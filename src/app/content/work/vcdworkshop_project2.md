@@ -1,7 +1,7 @@
 ---
-date: 2025-06-24
+date: 2024-11-28
 tags:
-  - web development
+  - poster
 ---
 
 #### 제작과정
