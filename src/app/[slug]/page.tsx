@@ -116,7 +116,7 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
             </>
           ) : (
              <div className="text-neutral-500 text-sm leading-relaxed mt-4">
-               loading...
+               雲散霧消는 Rain World를 플레이한 후 게임의 가능성에 빠졌다. 기계, 자연, 생물의 조화를 탐구한다. 
              </div>
           )}
         </section>
