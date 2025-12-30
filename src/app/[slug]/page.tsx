@@ -11,7 +11,6 @@ import TableOfContents from "../component/TableOfContents";
 import BottomBar from "../component/BottomBar";
 import TagFilter from "../component/TagFilter";
 
-// ✅ 1. 데이터를 기억할 "비밀 금고" (컴포넌트 밖에 만듦)
 let cachedPosts: Post[] | null = null;
 
 export default function PostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -21,17 +20,14 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
   const { slug } = use(params);
   const currentSlug = decodeURIComponent(slug);
 
-  // ✅ 2. 금고에 데이터가 있으면 그거 쓰고, 없으면 빈 배열로 시작
   const [allPosts, setAllPosts] = useState<Post[]>(cachedPosts || []);
   
-  // ✅ 3. 금고에 데이터가 있으면 로딩(Loading...) 안 함! (즉시 렌더링)
   const [loading, setLoading] = useState(!cachedPosts);
   
   const [selected, setSelected] = useState(currentSlug);
   const filterTag = searchParams.get("tag") || "";
 
   useEffect(() => {
-    // ✅ 4. 이미 데이터가 있으면 다운로드 안 하고 끝냄 (깜빡임 방지)
     if (cachedPosts) {
       setLoading(false);
       return;
@@ -86,14 +82,18 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
 
   if (loading) return <div className="py-20 text-center text-gray-400">Loading...</div>;
 
+  // ... (위쪽 생략)
+
   return (
     <div className="relative w-full h-full">
       <div className="hidden md:grid min-h-screen items-start gap-6 xl:gap-12
-        md:grid-cols-[280px_1fr_40px]
-        lg:grid-cols-[320px_1fr_330px]
-        xl:grid-cols-[380px_1fr_250px]"
+        md:grid-cols-[260px_1fr_40px]
+        lg:grid-cols-[280px_1fr_240px]  {/* 여기가 핵심: 오른쪽 목차 240px로 줄임 */}
+        xl:grid-cols-[320px_1fr_260px]"
       >
-        <aside className="sticky top-24 h-[calc(100vh-100px)] flex flex-col border-r border-neutral-100 pr-4">
+        
+
+        <aside className="sticky top-[100px] h-[calc(100vh-100px)] flex flex-col border-r border-neutral-100 pr-4">
           <div className="shrink-0 max-h-[40%] overflow-y-auto scrollbar-hide pb-4 border-b border-neutral-50 mb-4">
              <TagFilter tags={sidebarTags} selectedTag={filterTag} onSelect={setFilterTag} />
           </div>
@@ -102,11 +102,12 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
               posts={filteredSidebarPosts} 
               handleSelected={handleSelected} 
               selected={selected}
-              currentTag={filterTag} // Tag 유지를 위해 필요
+              currentTag={filterTag}
             />
           </div>
         </aside>
 
+        {/* [중앙] 본문 */}
         <section className="pb-20 px-4 max-w-4xl min-w-0 w-full">
           {currentPost ? (
             <>
@@ -120,11 +121,12 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
           )}
         </section>
 
-        <aside className="hidden lg:block sticky top-24 max-h-[calc(100vh-100px)] overflow-y-auto scrollbar-hide pt-10 pl-4">
+        <aside className="hidden lg:block sticky top-[100px] max-h-[calc(100vh-100px)] overflow-y-auto scrollbar-hide pt-2 pl-4">
           <TableOfContents posts={allPosts} selected={selected} />
         </aside>
       </div>
 
+      {/* --- 모바일 레이아웃 --- */}
       <div className="md:hidden flex flex-col pb-20 px-4">
          {currentPost ? (
           <>
