@@ -51,18 +51,14 @@ export default function BottomBar({
 
   return (
     <>
-      {/* 하단 트리거 바 */}
-      <div className="fixed bottom-0 inset-x-0 z-40 bg-white lg:hidden">
+      <div className="fixed bottom-8 inset-x-4 z-40 bg-white lg:hidden rounded-2xl shadow-xl border border-neutral-100">
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="w-full py-4 px-6 text-sm font-medium flex items-center justify-between active:bg-neutral-50"
+          className="w-full py-3.5 px-5 text-sm font-medium flex items-center justify-between active:bg-neutral-50 rounded-2xl"
         >
-          <span className="truncate flex-1 text-left">
+          <span className="truncate flex-1 text-left font-pretendard">
             {current ? current.slug : "목록을 선택하세요"}
-          </span>
-          <span className="text-neutral-400 text-xs shrink-0 ml-2">
-            {open ? "닫기" : "열기"}
           </span>
         </button>
       </div>
@@ -108,7 +104,8 @@ export default function BottomBar({
             <PostList 
               posts={filteredPosts} 
               selected={selected} 
-              handleSelected={onPick} 
+              handleSelected={onPick}
+              currentTag={selectedTag}
             />
           ) : (
             <div className="py-20 text-center text-neutral-400 text-sm">

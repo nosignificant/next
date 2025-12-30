@@ -13,7 +13,6 @@ export default function RootLayout({
 
         <div className="px-4 sm:px-6 min-h-screen flex flex-col">
           
-          {/* ✅ 상단 네비게이션 수정됨 */}
           <header className="
             sticky top-0 z-50             
             flex items-center gap-6       

@@ -40,7 +40,6 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
     .then(([notes, works]) => {
       const combined = [...(Array.isArray(notes) ? notes : []), ...(Array.isArray(works) ? works : [])];
       
-      // ✅ 5. 다운로드 받은 데이터를 금고에 저장
       cachedPosts = combined;
       setAllPosts(combined);
     })
@@ -82,7 +81,6 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
 
   if (loading) return <div className="py-20 text-center text-gray-400">Loading...</div>;
 
-  // ... (위쪽 생략)
 
   return (
     <div className="relative w-full h-full">
@@ -107,7 +105,6 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
           </div>
         </aside>
 
-        {/* [중앙] 본문 */}
         <section className="pb-20 px-4 max-w-4xl min-w-0 w-full">
           {currentPost ? (
             <>
@@ -116,7 +113,8 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
             </>
           ) : (
              <div className="text-neutral-500 text-sm leading-relaxed mt-4">
-               雲散霧消는 Rain World를 플레이한 후 게임의 가능성에 빠졌다. 기계, 자연, 생물의 조화를 탐구한다. 
+               雲散霧消는 Rain World를 플레이한 후 게임의 가능성에 빠졌다. 
+               기계, 자연, 생물의 조화를 탐구한다. 
              </div>
           )}
         </section>
@@ -133,7 +131,10 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
             <PostHeader post={currentPost} />
             <Content posts={allPosts} selected={selected} />
           </>
-        ) : null}
+        ) : <div className="text-neutral-500 text-sm leading-relaxed mt-4 px-10">
+               雲散霧消는 Rain World를 플레이한 후 게임의 가능성에 빠졌다. 
+               기계, 자연, 생물의 조화를 탐구한다. 
+             </div>}
         
         <BottomBar
           posts={sidebarPosts}
