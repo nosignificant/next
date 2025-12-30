@@ -1,7 +1,6 @@
 import "./globals.css";
 import { pretendard } from "./lib/localFont";
 import NoteNav from "./component/NoteNav";
-import HomeNav from "./component/HomeNav";
 
 export default function RootLayout({
   children,
@@ -14,11 +13,14 @@ export default function RootLayout({
 
         <div className="px-4 sm:px-6 min-h-screen flex flex-col">
           
-          {/* 상단 네비게이션 */}
-          <header className="flex justify-between items-center mb-8 pt-6">
-            <HomeNav />
-              <NoteNav />
-
+          {/* ✅ 상단 네비게이션 수정됨 */}
+          <header className="
+            sticky top-0 z-50             
+            flex items-center gap-6       
+            bg-white/80 backdrop-blur-md  
+            py-4 mb-4                     
+          ">
+            <NoteNav />
           </header>
 
           <main className="flex-1 w-full relative">

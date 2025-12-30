@@ -26,7 +26,7 @@ export default function Chron({ publishedAt, showYear, showMonth }: ChronProps) 
       </div>
 
 
-      <div className="w-10 px-1 text-left">
+      <div className="w-10 px-1 text-right">
         {parseInt(day)}일
       </div>
     </div>

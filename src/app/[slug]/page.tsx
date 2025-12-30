@@ -101,15 +101,11 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
               posts={filteredSidebarPosts} 
               handleSelected={handleSelected} 
               selected={selected} 
+              currentTag={filterTag} 
             />
           </div>
         </aside>
 
-        {/* [중앙] 본문 - 여기가 문제였습니다! */}
-        {/* ✅ 수정됨: 
-            1. max-w-4xl : 본문 너비 제한 (너무 커지는 것 방지)
-            2. min-w-0   : Flex/Grid 자식이 넘칠 때 줄어들게 허용 (가로 스크롤 방지 필수)
-        */}
         <section className="pb-20 px-4 max-w-4xl min-w-0 w-full">
           {currentPost ? (
             <>
@@ -119,7 +115,7 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
           ) : (
              <div className="text-neutral-500 text-sm leading-relaxed mt-4">
                雲散霧消는 Rain World라는 비디오 게임을 플레이 한 후 게임의 가능성에 빠졌다.<br/>
-               불교, 기계, 생물, 자연의 조화를 탐구한다.
+               기계, 생물, 자연의 조화를 탐구한다.               
              </div>
           )}
         </section>
@@ -140,7 +136,7 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
         ) : (
            <div className="text-neutral-500 text-sm leading-relaxed mt-4">
                雲散霧消는 Rain World라는 비디오 게임을 플레이 한 후 게임의 가능성에 빠졌다.<br/>
-               불교, 기계, 생물, 자연의 조화를 탐구한다.
+              기계, 생물, 자연의 조화를 탐구한다.
            </div>
         )}
         
