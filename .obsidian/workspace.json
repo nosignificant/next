@@ -171,6 +171,13 @@
   },
   "active": "56fd96d52e57c6fe",
   "lastOpenFiles": [
+    "src/app/component/OpenButton.tsx",
+    "src/app/[slug]/page.tsx",
+    "src/app/[slug]",
+    "src/app/note/[slug]/page.tsx",
+    "src/app/note/[slug]",
+    "src/app/note",
+    "src/app/work/[slug]/page.tsx",
     "public/favicon.png",
     "public/favicon.ico",
     "src/app/favicon.ico",
@@ -178,14 +185,8 @@
     "src/app/avicon.ico.png",
     "src/app/icon.png",
     "src/app/component/Explain.tsx",
-    "src/app/component/explain.tsx",
     "public/icon.png",
-    "node_modules/@types/react-syntax-highlighter/package.json",
-    "node_modules/@types/react-syntax-highlighter/LICENSE",
-    "node_modules/@types/react-syntax-highlighter/index.d.ts",
     "node_modules/@types/react-syntax-highlighter/README.md",
-    "node_modules/@types/react-syntax-highlighter",
-    "node_modules/highlight.js/scss/zenburn.scss",
     "node_modules/highlight.js/styles/school-book.png",
     "node_modules/highlight.js/scss/school-book.png",
     "node_modules/highlight.js/styles/brown-papersq.png",
@@ -215,7 +216,6 @@
     "src/app/content/work/chieftain.md",
     "src/app/content/work/1314.008.md",
     "src/app/content/work/생물 만들기.md",
-    "src/app/content/work/문명장례.md",
-    "node_modules/polished/docs/assets/logo.svg"
+    "src/app/content/work/문명장례.md"
   ]
 }

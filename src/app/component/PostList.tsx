@@ -5,7 +5,6 @@ import type { Post } from "../lib/type";
 import Chron from "./Chron";
 import clsx from "clsx";
 
-// ✅ Props 타입 정의 (any 삭제)
 type PostListProps = { 
   posts: Post[]; 
   handleSelected: (slug: string) => void;

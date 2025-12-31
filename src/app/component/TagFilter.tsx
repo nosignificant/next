@@ -19,7 +19,6 @@ export default function TagFilter({ tags, selectedTag, onSelect }: TagFilterProp
     <div className="flex items-start">
       <div className="flex flex-wrap gap-2 items-start">
         
-        {/* --- ALL 버튼 --- */}
         <button
           onClick={() => onSelect("")}
           className="relative flex flex-col items-start w-fit group" /* flex-col로 변경하여 선을 글자 밑으로 배치 */

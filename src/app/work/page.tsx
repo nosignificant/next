@@ -1,10 +1,9 @@
-// src/app/work/page.tsx
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
 import type { Post } from "../lib/type";
-import WorkFilter from "../component/work/WorkFilter"; // 분리한 컴포넌트
-import WorkGrid from "../component/work/WorkGrid";     // 분리한 컴포넌트
+import WorkFilter from "../component/work/WorkFilter";
+import WorkGrid from "../component/work/WorkGrid";     
 
 export default function WorkPage() {
   const [works, setWorks] = useState<Post[]>([]);
@@ -48,7 +47,6 @@ return (
         />
       </aside>
 
-      {/* ✅ 메인 영역: aside가 차지하던 w-48만큼 왼쪽 여백(ml-48)을 줌 */}
       <main className="flex-1 w-full md:ml-30">
         <WorkGrid works={filteredWorks} />
       </main>
