@@ -2,7 +2,7 @@
 date: 2025-12-21
 tags:
   - code
-  - IK
+  - procedural
 ---
 [깃허브 링크](https://github.com/nosignificant/procedural/tree/main/1.%20Basic)
 
@@ -63,13 +63,13 @@ Vector3 raycastOrigin = referencePosition + transform.forward * (offsetFoot ? st
 ![](img/note/procedural/1.png)
 
 </div>
-전체 구조. 위 코드는 target과 constraint을 하나의 오브젝트에 넣어서 했는데 어떻게 한 건지 이해하지 못한 채로 따라하려다 엄청 시간을 버렸다. 
+전체 구조. 내가 참고한 영상에서는 target과 constraint을 하나의 오브젝트에 넣어서 했는데 어떻게 한 건지 이해하지 못한 채로 따라하려다 엄청 시간을 버렸다. target과 constraint를 분리한 구조다. 
 <div classname="py-2 w-[250px]">
 
 ![](img/note/procedural/2.png)
 
 </div>
-내가 만든 건 직접 움직이는 건 target, 그리고 그 위치를 따라가는 건 constraint다. 
+직접 움직이는 건 target, 그리고 그 위치를 따라가는 건 constraint다. 
 constraint내부의 footL,R에는 유니티 내장 two bone IK constraint component를 붙여주고 이걸 묶은 부모에는 rig를 달아준다. 
 
 <div classname="py-2 w-[250px]">
