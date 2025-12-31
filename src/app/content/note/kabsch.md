@@ -6,23 +6,14 @@ tags:
 ---
 
 [참고한 링크](https://zalo.github.io/blog/kabsch/)
-
-<iframe
-
-width="100%"
-
-height="400"
-
-src="https://youtube.com/embed/s5nHoR-nBY8"
-
-title="YouTube video player"
-
-frameborder="0"
-
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-
-allowfullscreen
-
+<iframe 
+  width="100%" 
+  height="400" 
+  src="https://youtube.com/embed/s5nHoR-nBY8" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen
 ></iframe>
 
 kabsch 알고리즘은 두 쌍의 점 집합 사이의 RMSD(제곱근)를 최소화하는 최적의 회전 행렬을 계산하는 방법이라고 한다. 
