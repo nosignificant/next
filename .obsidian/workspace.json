@@ -171,6 +171,8 @@
   },
   "active": "56fd96d52e57c6fe",
   "lastOpenFiles": [
+    "src/app/content/note/kabsch.md",
+    "src/app/content/note/inverse kinematics 2 copy.md",
     "src/app/content/work/farewell apoptosis.md",
     "src/app/content/work/chieftain.md",
     "src/app/content/work/1314.008.md",
@@ -195,8 +197,6 @@
     "src/app/content/note/카라마조프가의 형제들.md",
     "src/app/content/note/튜플, 객체, 2차원 배열.md",
     "src/app/content/note/히스토리에, 알렉산드로스 제국의 눈물, 유레카, 한니발 전기를 읽고.md",
-    "src/app/content/study/9월 26일.md",
-    "src/app/content/study/만들어진 배열에 정보를 저장하기.md",
     "src/app/lib/parseWork.ts",
     "node_modules/3d-force-graph/package.json",
     "node_modules/three/package.json",

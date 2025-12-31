@@ -4,7 +4,7 @@ tags:
   - code
   - procedural
 ---
-ㅁhttps://github.com/zalo/MathUtilities/blob/master/Assets/IK/CCDIK/CCDIKJoint.cs
+[참고한 링크](https://github.com/zalo/MathUtilities/blob/master/Assets/IK/CCDIK/CCDIKJoint.cs)
 
 CCD(Cyclic Coordinate Descent) 라는 IK(역운동학) 알고리즘을 활용한 로봇 팔이다.
 
