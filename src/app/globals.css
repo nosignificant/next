@@ -1,27 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background:rgb(255, 255, 255);
   --foreground: #171717;
-}
+  --blue-700:rgb(0, 0, 255);  
 
-@media screen and (max-width: 640px) {
-  html {
-    font-size: 14.7px;
-  }
+  --tag-default:rgb(0, 0, 0); 
+  --tag-code: #ff4757;    
+  --tag-web: #1e90ff;      
+  --tag-comic:rgb(0, 13, 255);      
+  --tag-poster: #2ed573;   
+  --tag-3d: #ffa502;       
+  --tag-illust:rgb(255, 2, 230);       
+
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-aritaD);
 }
 
-.center {
-  top: 90%;
-  left: 50%;
-  transform: translate(-50%, 0%);
-}
 
 
 .prose :where(code):not(:where(pre code))::before {
@@ -39,4 +37,9 @@ body {
   font-size: 0.85em !important;
   font-weight: 400 !important;
   border: none !important;
+}
+
+code, pre, kbd, samp {
+  letter-spacing: normal !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
 }

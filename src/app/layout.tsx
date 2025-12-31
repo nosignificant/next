@@ -1,5 +1,4 @@
 import "./globals.css";
-import { pretendard } from "./lib/localFont";
 import NoteNav from "./component/NoteNav";
 
 export default function RootLayout({
@@ -9,7 +8,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${pretendard.variable} font-pretendard text-neutral-800 bg-white`}>
+      <body className="text-neutral-800 bg-white font-serif tracking-tight">
 
         <div className="px-4 sm:px-6 min-h-screen flex flex-col">
           
@@ -27,7 +26,7 @@ export default function RootLayout({
           </main>
           
           <footer className="py-10 text-center text-sm text-neutral-400 mb-10">
-            © 2025 雲散霧消. All rights reserved.
+            © 2025 雲散霧消
           </footer>
         </div>
       </body>

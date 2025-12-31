@@ -1,5 +1,4 @@
 import { FormattedText } from "../../lib/type";
-import React from "react";
 
 export default function InlineText({ text }: { text: FormattedText }) {
   const styles: string[] = [];
@@ -36,7 +35,6 @@ export default function InlineText({ text }: { text: FormattedText }) {
   } else if (text.keyboard) {
     return <kbd className={style}>{text.text}</kbd>;
   } else {
-    // underline, strikethrough 등은 span으로 처리
     return <span className={style}>{text.text}</span>;
   }
 }

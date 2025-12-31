@@ -11,6 +11,7 @@ import TableOfContents from "../component/TableOfContents";
 import BottomBar from "../component/BottomBar";
 import TagFilter from "../component/TagFilter";
 import Comments from "../component/Comments";
+import Explain from "../component/Explain";
 
 let cachedPosts: Post[] | null = null;
 
@@ -115,30 +116,9 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
             </>
           ) : (
              <div className="text-neutral-500 text-sm leading-relaxed mt-4 px-10">
-  <p className="mb-6">
-    雲散霧消는 Rain World를 플레이한 후 게임의 가능성에 빠졌다.<br/> 
-    기계, 자연, 생물의 조화를 탐구한다. 
-  </p>
+    <Explain/>
   
-  {/* 링크 영역 */}
-  <div className="flex items-center gap-4 text-xs">
-    <a 
-      href="https://github.com/nosignificant" 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="underline underline-offset-4 decoration-neutral-300 hover:decoration-neutral-800 hover:text-neutral-800 transition-all"
-    >
-      GitHub
-    </a>
-    <a 
-      href="https://www.instagram.com/gonewithmind/" 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="underline underline-offset-4 decoration-neutral-300 hover:decoration-neutral-800 hover:text-neutral-800 transition-all"
-    >
-      Instagram
-    </a>
-  </div>
+
 </div>
           )}
         </section>
@@ -157,30 +137,7 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
             <Comments />
           </>
         ) : <div className="text-neutral-500 text-sm mt-4 px-10">
-  <p className="mb-6">
-    雲散霧消는 Rain World를 플레이한 후 게임의 가능성에 빠졌다.<br/> 
-    기계, 자연, 생물의 조화를 탐구한다. 
-  </p>
-  
-  {/* 링크 영역 */}
-  <div className="flex items-center gap-4 text-xs">
-    <a 
-      href="https://github.com/nosignificant" 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="underline underline-offset-4 decoration-neutral-300 hover:decoration-neutral-800 hover:text-neutral-800 transition-all"
-    >
-      GitHub
-    </a>
-    <a 
-      href="https://www.instagram.com/gonewithmind/" 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="underline underline-offset-4 decoration-neutral-300 hover:decoration-neutral-800 hover:text-neutral-800 transition-all"
-    >
-      Instagram
-    </a>
-  </div>
+  <Explain/>
 </div>}
         
         <BottomBar

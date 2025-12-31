@@ -4,9 +4,9 @@ import { useState } from "react";
 import clsx from "clsx";
 
 type TagFilterProps = {
-  tags: string[];           
-  selectedTag: string;      
-  onSelect: (tag: string) => void; 
+  tags: string[];
+  selectedTag: string;
+  onSelect: (tag: string) => void;
 };
 
 export default function TagFilter({ tags, selectedTag, onSelect }: TagFilterProps) {
@@ -16,44 +16,73 @@ export default function TagFilter({ tags, selectedTag, onSelect }: TagFilterProp
   const hasMore = tags.length > 15;
 
   return (
-    <div className="mb-6">
-      <div className="flex flex-wrap gap-1.5 items-center">
+    <div className="flex items-start">
+      <div className="flex flex-wrap gap-2 items-start">
         
-        {/* All 버튼 */}
+        {/* --- ALL 버튼 --- */}
         <button
           onClick={() => onSelect("")}
-          className={clsx(
-            "px-2 py-1 rounded-full text-xs transition-colors border",
-            selectedTag === ""
-              ? "bg-neutral-800 text-white border-neutral-800"
-              : "bg-white text-neutral-500 border-neutral-200 hover:border-neutral-400"
-          )}
+          className="relative flex flex-col items-start w-fit group" /* flex-col로 변경하여 선을 글자 밑으로 배치 */
         >
-          All
+          <span 
+            className={clsx(
+              "text-[13px] uppercase transition-colors",
+              selectedTag === "" ? "font-bold" : "text-neutral-400 group-hover:text-black"
+            )}
+            style={{ 
+              color: selectedTag === "" ? "var(--tag-default, #000)" : "var(--blue-700)" 
+            }}
+          >
+            All
+          </span>
+          <div 
+            className="h-[0.5px] w-full"
+            style={{
+              backgroundColor: selectedTag === "" ? "var(--tag-default, #000)" : "var(--blue-700)",
+              opacity:  1
+            }}
+          />
         </button>
 
-        {visibleTags.map((tag) => (
-          <button
-            key={tag}
-            onClick={() => onSelect(tag)}
-            className={clsx(
-              "px-2 py-1 rounded-full text-xs transition-colors border",
-              selectedTag === tag
-                ? "bg-neutral-800 text-white border-neutral-800"
-                : "bg-white text-neutral-500 border-neutral-200 hover:border-neutral-400"
-            )}
-          >
-            {tag}
-          </button>
-        ))}
+        {/* --- 태그 리스트 --- */}
+        {visibleTags.map((tag) => {
+          const isSelected = selectedTag === tag;
+          const tagColor = isSelected ? `var(--tag-default)` : `var(--blue-700)`;
 
-        {/* 더보기 버튼 */}
+          return (
+            <button
+              key={tag}
+              onClick={() => onSelect(tag)}
+              className="relative flex flex-col items-start w-fit group"
+            >
+              <span 
+                className={clsx(
+                  "text-[13px] uppercase transition-colors text-left",
+                  isSelected ? "font-bold" : "text-neutral-400 group-hover:text-black"
+                )}
+                style={{ color: isSelected ? tagColor : "var(--blue-700)" }}
+              >
+                {tag}
+              </span>
+              
+              {/* ✅ 글자 밑 실선 추가 */}
+              <div 
+                className="h-[0.5px] w-full"
+                style={{
+                  backgroundColor: isSelected ? tagColor : "var(--blue-700)",
+                  opacity: 1 
+                }}
+              />
+            </button>
+          );
+        })}
+
         {hasMore && (
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-[10px] text-neutral-400 underline underline-offset-2 ml-1 hover:text-neutral-800"
+            className="text-[10px] text-neutral-400 mt-2 hover:text-black transition-colors"
           >
-            {isOpen ? "접기" : `+ ${tags.length - 15} more`}
+            {isOpen ? "[ CLOSE ]" : `[ + ${tags.length - 15} MORE ]`}
           </button>
         )}
       </div>

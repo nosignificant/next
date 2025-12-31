@@ -1,6 +1,4 @@
 import "../globals.css";
-import { aritaD } from "../lib/localFont";
-
 
 export default function WorkLayout({
   children,
@@ -9,7 +7,7 @@ export default function WorkLayout({
 }>) {
   return (
 
-    <div className={`${aritaD.variable} font-arita w-full`}>
+    <div className="w-full">
       <main>
         {children}
       </main>

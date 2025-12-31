@@ -1,15 +1,17 @@
+// src/app/work/page.tsx
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import Link from "next/link";
-import clsx from "clsx";
 import type { Post } from "../lib/type";
+import WorkFilter from "../component/work/WorkFilter"; // 분리한 컴포넌트
+import WorkGrid from "../component/work/WorkGrid";     // 분리한 컴포넌트
 
 export default function WorkPage() {
   const [works, setWorks] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterTag, setFilterTag] = useState("All");
 
+  // 데이터 로딩
   useEffect(() => {
     fetch("/api/work")
       .then((res) => res.json())
@@ -18,76 +20,40 @@ export default function WorkPage() {
       .finally(() => setLoading(false));
   }, []);
 
+  // 태그 목록 추출
   const allTags = useMemo(() => {
     const tags = new Set<string>();
     works.forEach((p) => p.tags.forEach((t) => tags.add(t)));
     return ["All", ...Array.from(tags).sort()];
   }, [works]);
 
+  // 필터링된 목록
   const filteredWorks = filterTag === "All"
     ? works
     : works.filter((p) => p.tags.includes(filterTag));
 
   if (loading) return <div className="p-4 text-neutral-400 text-xs">Loading...</div>;
 
-  return (
-    <div className="pb-20">
-      {/* 필터 */}
-      <div className="mb-12 px-1">
-        <div className="flex flex-wrap gap-2">
-          {allTags.map((tag) => (
-            <button
-              key={tag}
-              onClick={() => setFilterTag(tag)}
-              className={clsx(
-                "px-3 py-1 rounded-full text-xs border transition-all",
-                filterTag === tag
-                  ? "bg-black text-white border-black"
-                  : "bg-white text-neutral-400 border-neutral-200 hover:border-neutral-400"
-              )}
-            >
-              {tag}
-            </button>
-          ))}
-        </div>
-      </div>
+// src/app/work/page.tsx
 
-{/* ✅ 개선된 자유 정렬 레이아웃 */}
-      <div className="flex flex-wrap items-end gap-x-8 gap-y-5 ">
-        {filteredWorks.map((work) => (
-          <div 
-            key={work.slug} 
-            className="group shrink-0"
-            style={{ flex: "0 0 auto" }}
-          >
-            <Link href={`/${work.slug}`} className="block">
-              <div className="relative">
-                {work.thumbnail ? (
-                  <img
-                    src={work.thumbnail}
-                    alt={work.slug}
-                    className="w-auto h-auto max-w-[80vw] md:max-w-[250px] max-h-[250px] md:max-h-[250px] object-contain"
-                  />
-                ) : (
-                  <div className="w-32 h-32 bg-neutral-100 flex items-center justify-center text-neutral-300 text-[10px]">
-                    NO IMAGE
-                  </div>
-                )}
-              </div>
-              
-              {/* 캡션: 이미지 바로 아래에 정보 표시 */}
-              <div className="mt-4 max-w-full">
-                <span className="text-[10px] text-black font-mono block opacity-0 group-hover:opacity-100 transition-opacity truncate">
-                  {work.slug}
-                </span>
-                <span className="text-[9px] text-neutral-400 font-mono block opacity-0 group-hover:opacity-100 transition-opacity">
-                  {work.publishedAt}
-                </span>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
+return (
+  <div className="pb-20 px-1">
+    <div className="flex flex-col md:flex-row items-start">
+      
+      <aside className="w-full md:w-48 shrink-0 md:fixed md:top-24 top-10 z-50">
+        <WorkFilter 
+          tags={allTags} 
+          selectedTag={filterTag} 
+          onSelect={setFilterTag} 
+        />
+      </aside>
+
+      {/* ✅ 메인 영역: aside가 차지하던 w-48만큼 왼쪽 여백(ml-48)을 줌 */}
+      <main className="flex-1 w-full md:ml-30">
+        <WorkGrid works={filteredWorks} />
+      </main>
+
     </div>
-  );
+  </div>
+);
 }
