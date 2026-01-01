@@ -57,13 +57,13 @@ Vector3 raycastOrigin = referencePosition + transform.forward * (offsetFoot ? st
 
 ## 적용해보기
 
-사실 위 코드에서 가장 어려운 부분은 리깅을 적용하는 거였다... 
+사실 위 유튜브 영상에서 가장 어려운 부분은 리깅을 적용하는 거였다... 
 <div classname="py-2 w-[250px]">
 
 ![](img/note/procedural/1.png)
 
 </div>
-전체 구조. 내가 참고한 영상에서는 target과 constraint을 하나의 오브젝트에 넣어서 했는데 어떻게 한 건지 이해하지 못한 채로 따라하려다 엄청 시간을 버렸다. target과 constraint를 분리한 구조다. 
+전체 구조. 내가 참고한 영상에서는 target과 constraint을 하나의 오브젝트에 넣어서 만들었고, 어떻게 한 건지 이해하지 못한 채로 따라하려다 엄청 시간을 버렸다. 위의 내가 만든 구조는 target과 constraint를 분리한 구조다. 
 <div classname="py-2 w-[250px]">
 
 ![](img/note/procedural/2.png)
