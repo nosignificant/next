@@ -171,6 +171,11 @@
   },
   "active": "56fd96d52e57c6fe",
   "lastOpenFiles": [
+    "src/app/content/note/모든 것은 영원했다, 사라지기 전까지는 - 2장까지.md",
+    "src/app/content/note/모든 것은 영원했다, 사라지기 전까지는.md",
+    "src/app/content/note/그 많던 싱아는 누가 다 먹었을까 copy.md",
+    "src/app/content/note/openGL-triangle.md",
+    "src/app/content/note/inverse kinematics 1 copy.md",
     "src/app/content/note/inverse kinematics 2.md",
     "src/app/content/note/kabsch.md",
     "src/app/content/note/그 많던 싱아는 누가 다 먹었을까.md",
@@ -210,11 +215,6 @@
     "node_modules/@types/prismjs/README.md",
     "node_modules/format/Readme.md",
     "node_modules/fault/readme.md",
-    "node_modules/refractor/readme.md",
-    "node_modules/prismjs/README.md",
-    "node_modules/prismjs/CHANGELOG.md",
-    "node_modules/lowlight/readme.md",
-    "node_modules/lowlight/changelog.md",
     "node_modules/highlight.js/styles/pojoaque.jpg",
     "node_modules/highlight.js/scss/pojoaque.jpg"
   ]

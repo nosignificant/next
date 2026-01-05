@@ -29,7 +29,7 @@ export default function BlockCode({ children, ...props }: ComponentPropsWithoutR
       return (
         <div key={lineIdx}>
           {codePart.split(/(\s+)/).map((part, i) => {
-            const keywords = /^(return|new|if|for|while|float|int|public|private|static|class|using|var|const|type|foreach|Vector2|Vector3|Quaternion|Mathf|Target|ToolTip|transform|rotation|position)$/;
+            const keywords = /^(return|new|if|for|while|float|int|public|private|static|class|using|var|const|type|foreach|Vector2|Vector3|Quaternion|Mathf|Target|ToolTip|transform|rotation|position|GLuint)$/;
             if (keywords.test(part)) {
               return <span key={i} style={{ color: "var(--blue-700)", fontWeight: 500 }}>{part}</span>;
             }
