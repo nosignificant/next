@@ -171,6 +171,10 @@
   },
   "active": "56fd96d52e57c6fe",
   "lastOpenFiles": [
+    "src/app/favicon.ico",
+    "src/app/Artboard 1.png",
+    "src/app/favicon.png",
+    "src/app/favicon.svg",
     "src/app/content/note/모든 것은 영원했다, 사라지기 전까지는 - 2장까지.md",
     "src/app/content/note/모든 것은 영원했다, 사라지기 전까지는.md",
     "src/app/content/note/그 많던 싱아는 누가 다 먹었을까 copy.md",
@@ -201,7 +205,6 @@
     "src/app/work/[slug]/page.tsx",
     "public/favicon.png",
     "public/favicon.ico",
-    "src/app/favicon.ico",
     "src/app/avicon.ico",
     "src/app/avicon.ico.png",
     "src/app/icon.png",
@@ -210,12 +213,8 @@
     "node_modules/highlight.js/styles/school-book.png",
     "node_modules/highlight.js/scss/school-book.png",
     "node_modules/highlight.js/styles/brown-papersq.png",
-    "node_modules/highlight.js/scss/brown-papersq.png",
     "node_modules/highlight.js/README.md",
     "node_modules/@types/prismjs/README.md",
-    "node_modules/format/Readme.md",
-    "node_modules/fault/readme.md",
-    "node_modules/highlight.js/styles/pojoaque.jpg",
-    "node_modules/highlight.js/scss/pojoaque.jpg"
+    "node_modules/format/Readme.md"
   ]
 }
