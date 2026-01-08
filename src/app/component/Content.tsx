@@ -3,6 +3,8 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import rehypeSlug from "rehype-slug";
+
 import type { ComponentPropsWithoutRef, JSX } from "react";
 import type { ExtraProps } from "react-markdown";
 import type { Post } from "../lib/type";
@@ -87,12 +89,13 @@ export default function Content({ posts, selected }:
       leading-[26.5px] 
     ">
       <ReactMarkdown 
-        rehypePlugins={[rehypeRaw]} 
-        remarkPlugins={[remarkGfm]} 
+      
+rehypePlugins={[rehypeSlug, rehypeRaw]}        
+remarkPlugins={[remarkGfm]} 
         components={components} 
       >
         {post.content}
-      </ReactMarkdown>
+      </ReactMarkdown >
     </article>
   );
 

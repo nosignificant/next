@@ -39,7 +39,6 @@ color = aColor;
 ```
 void LinkAttrib(VBO& VBO, GLuint layout, GLuint numComponents, GLenum type, GLsizeiptr stride, void* offset){
 glVertexAttribPointer(layout, numComponents, type, GL_FALSE, stride, offset);
-
 glEnableVertexAttribArray(layout);
 }
 ```
@@ -119,8 +118,11 @@ glTexParameteri(texType, GL_TEXTURE_WRAP_S, GL_REPEAT);
 glTexParameteri(texType, GL_TEXTURE_WRAP_T, GL_REPEAT);
 ```
 GL_REPEAT : 반복
+
 GL_MIRROR_REPEAT: 반복할때마다 뒤집음 
+
 GL_CLAMP_TO_EDGE: 이미지의 가장자리가 각각 0, 1까지 늘어남
+
 GL_CLAMP_TO_BORDER : 이미지 밖은 사용자 지정 색으로 채워짐 
 
 이미지 좌표 s(x), t(y) 를 각각 적용해줘야 한다.

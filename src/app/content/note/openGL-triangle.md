@@ -82,11 +82,15 @@ VBO를 만들기 전에 VAO를 만들어야 한다.
 glBufferData(데이터 종류, 크기, 실제 데이터, 상태)
 상태의 종류
 	static: 한 번 수정되고 여러번 사용될 것
+
 	dynamic: 여러 번 수정되고 여러번 사용될 것
+
 	stream: 한 번만 수정되고 자주 사용되지 않을 것
 
 이후 while(!glfwWindowShouldClose(window)) 루프 안에서 
-glUseProgram(프로그램 이름), 
-glBindVertexArray(VAO), 
-glDrawArrays(GL_TRIANGLES, 0, 3);
+`glUseProgram(프로그램 이름), `
+
+`glBindVertexArray(VAO), `
+
+`glDrawArrays(GL_TRIANGLES, 0, 3);`
 해서  삼각형을 그리면 된다.
