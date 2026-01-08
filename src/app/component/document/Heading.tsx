@@ -16,12 +16,11 @@ export default function Heading({
   ...props
 }: HProps & { as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" }) {
   
-  // ✅ 1. 기존에 사용하시던 사이즈/여백 설정을 그대로 유지합니다.
   const sizes: Record<string, string> = {
     h1: "text-2xl pt-8 pb-4 font-bold no-underline",
-    h2: "text-xl pt-6 pb-3 font-bold no-underline",
-    h3: "text-xl pt-4 pb-2 font-bold no-underline",
-    h4: "text-lg font-bold no-underline",
+    h2: "text-xl pt-6 pb-3 mt-2 font-bold no-underline",
+    h3: "text-[16.5px] font-bold pt-4 pb-2 mt-2 no-underline",
+    h4: "font-bold no-underline",
     h5: "text-base font-bold no-underline",
     h6: "text-base font-bold no-underline",
   };

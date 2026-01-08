@@ -48,7 +48,7 @@ export default function BlockCode({ children, ...props }: ComponentPropsWithoutR
 
   return (
     <pre
-      className="bg-neutral-50 !border !border-neutral-200 !text-neutral-600 rounded-md p-5 overflow-x-auto my-6 text-[13px] !font-mono !tracking-normal leading-[1.6]"
+      className="bg-neutral-50 !border !border-neutral-200 !text-neutral-600 rounded-md p-5 overflow-x-auto my-2 text-[13px] !font-mono !tracking-normal leading-[1.6]"
       {...props}
     >
       <code className="!bg-transparent !p-0 border-none !font-mono whitespace-pre">

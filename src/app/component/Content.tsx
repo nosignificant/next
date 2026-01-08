@@ -4,14 +4,16 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
+import Link from "next/link"; 
 
 import type { ComponentPropsWithoutRef, JSX } from "react";
 import type { ExtraProps } from "react-markdown";
 import type { Post } from "../lib/type";
 
 import Heading from "./document/Heading";
-import InlineLink from "./document/InlineLink";
 import BlockCode from "./document/BlockCode";
+
+
 
 type MarkdownComponentProps<T extends keyof JSX.IntrinsicElements & string> = 
   ComponentPropsWithoutRef<T> & ExtraProps;
@@ -19,8 +21,7 @@ type MarkdownComponentProps<T extends keyof JSX.IntrinsicElements & string> =
 function Paragraph({ className, children, ...props }: MarkdownComponentProps<"p">) {
   return (
     <div 
-      className={` text-neutral-800 mt-1     
-${className || ""}`} 
+      className={`text-neutral-800 mt-1 ${className || ""}`} 
       {...props} 
     >
       {children}
@@ -41,44 +42,58 @@ const components = {
 
   blockquote: ({ ...props }: MarkdownComponentProps<"blockquote">) => (
     <blockquote 
-      className="border-l-4 border-neutral-300 p-4 my-4 py-[0.4rem] bg-neutral-50 text-neutral-600" 
+      className="border-l-4 border-neutral-300 p-4 my-4 py-[0.4rem] pb-[0.7rem] bg-neutral-50 text-neutral-600" 
       {...props} 
     />
   ),
-ul: ({ ...props }: MarkdownComponentProps<"ul">) => (
-    <ul className="list-disc list-outside ml-5 mb-6 text-neutral-800" {...props} />
+  ul: ({ ...props }: MarkdownComponentProps<"ul">) => (
+    <ul 
+      className="list-disc list-outside ml-5 text-neutral-800"
+      {...props} 
+    />
   ),
   ol: ({ ...props }: MarkdownComponentProps<"ol">) => (
-    <ol className="list-decimal list-outside ml-5 mb-6 text-neutral-800" {...props} />
+    <ol className="list-decimal list-outside ml-5 text-neutral-800" {...props} />
   ),
   li: ({ ...props }: MarkdownComponentProps<"li">) => (
-    <li className="pl-1 mb-2 leading-[24px]" {...props} />
+    <li className="pl-1" {...props} />
   ),
 
-  a: ({ href, children}: MarkdownComponentProps<"a">) => (
-    <InlineLink href={href || "#"}>{children}</InlineLink>
-  ),
+  a: ({ href, children, ...props }: MarkdownComponentProps<"a">) => {
+    const linkHref = href || "";
+    const isInternal = linkHref.startsWith("/") || linkHref.startsWith("#");
+    
+    const linkClasses = "text-blue-700 cursor-pointer transition-colors";
 
-  pre: BlockCode,
-  
-  p: Paragraph,
-
-  code: ({ inline, className, children, ...props }: MarkdownComponentProps<"code"> & { inline?: boolean }) => {
-    if (!inline) {
-      return <code className={className} {...props}>{children}</code>;
+    if (isInternal) {
+      return (
+        <Link href={linkHref} className={linkClasses} {...props}>
+          {children}
+        </Link>
+      );
     }
+
+    // 외부 링크는 새 탭으로 열기
     return (
-      <code
-        className="bg-neutral-100 text-neutral-800 rounded px-1.5 py-0.5 font-mono align-middle"
+      <a 
+        href={linkHref} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className={linkClasses} 
         {...props}
       >
         {children}
-      </code>
+      </a>
     );
   },
+pre: ({ children }: any) => <>{children}</>,
+
+  p: Paragraph,
+
+code: BlockCode as any
 };
-export default function Content({ posts, selected }: 
-  { posts: Post[]; selected: string; }) {
+
+export default function Content({ posts, selected }: { posts: Post[]; selected: string; }) {
   const post = posts.find((p) => p.slug === selected);
   if (!post) return null;
 
@@ -89,14 +104,12 @@ export default function Content({ posts, selected }:
       leading-[26.5px] 
     ">
       <ReactMarkdown 
-      
-rehypePlugins={[rehypeSlug, rehypeRaw]}        
-remarkPlugins={[remarkGfm]} 
+        rehypePlugins={[rehypeSlug, rehypeRaw]}        
+        remarkPlugins={[remarkGfm]} 
         components={components} 
       >
         {post.content}
-      </ReactMarkdown >
+      </ReactMarkdown>
     </article>
   );
-
 }
