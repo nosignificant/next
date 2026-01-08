@@ -86,11 +86,23 @@ const components = {
       </a>
     );
   },
-pre: ({ children }: any) => <>{children}</>,
-
+  pre: BlockCode,
+  
   p: Paragraph,
 
-code: BlockCode as any
+  code: ({ inline, className, children, ...props }: MarkdownComponentProps<"code"> & { inline?: boolean }) => {
+    if (!inline) {
+      return <code className={className} {...props}>{children}</code>;
+    }
+    return (
+      <code
+        className="bg-neutral-100 text-neutral-800 rounded px-1.5 py-0.5 font-mono align-middle"
+        {...props}
+      >
+        {children}
+      </code>
+    );
+  },
 };
 
 export default function Content({ posts, selected }: { posts: Post[]; selected: string; }) {
