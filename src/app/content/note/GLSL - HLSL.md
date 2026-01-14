@@ -86,7 +86,7 @@ gl_Position -> float4 positionHCS : SV_POSITION
 
 out vec2 v_uv -> float2 uv : TEXCOORD0
 
-## HLS의 구조
+## HLSL의 구조
 
 openGL에서 값을 gpu에 넘겨주는 번거로운 과정들을 다 생략한듯한 코드다. bind니 뭐니하는 부분이 다 빠졌다. 
 
