@@ -7,7 +7,7 @@ tags:
 
 ![](img/note/procedural/CCDIK_p.png)
 
-ccdik 활용하면 이런 관절을 만들 수 있을 것 같아서 도전했다.
+[ccdik](/inverse-kinematics2) 활용하면 이런 관절을 만들 수 있을 것 같아서 도전했다.
 
 
 ## 시행착오
@@ -68,17 +68,16 @@ ccdik 활용하면 이런 관절을 만들 수 있을 것 같아서 도전했다
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
   allowfullscreen
 ></iframe>
-</div>
 
 
 정리한 구조는 이렇게 생겼다.
 ![](img/note/procedural/CCDIK_p3.png)
 
-target(목적지 방향 계산용)
+- target(목적지 방향 계산용)
 
-tip target(발 끝 당 하나)
+- tip target(발 끝 당 하나)
 
-다리 1,2 이렇게 있고 다리 안에는 그냥 평범한 ccdik 관절들
+- 다리 1,2 이렇게 있고 다리 안에는 그냥 평범한 ccdik 관절들
 
 이 이미지에 비활성화된 오브젝트들... 시도하다가 실패한 흔적이다...
 
