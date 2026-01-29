@@ -1,6 +1,5 @@
 ---
 date: 2026-01-06T00:00:00.000Z
-description: Lorem ipsum dolor sit amet
 tags:
   - note
 title: 로봇 드림

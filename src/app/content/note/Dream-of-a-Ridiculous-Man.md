@@ -1,6 +1,5 @@
 ---
 date: 2025-04-08T00:00:00.000Z
-description: 병기는 자연의 이빨
 tags:
   - read
   - Dostoevsky

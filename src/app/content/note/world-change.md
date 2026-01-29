@@ -1,9 +1,8 @@
 ---
 date: 2025-04-14T00:00:00.000Z
-description: Lorem ipsum dolor sit amet
 tags:
   - read
-title: '세계는 이렇게 바뀐다, 수레바퀴 이후'
+title: 세계는 이렇게 바뀐다, 수레바퀴 이후
 ---
 
 ### 1.

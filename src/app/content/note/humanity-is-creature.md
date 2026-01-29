@@ -1,6 +1,5 @@
 ---
 date: 2025-06-04T00:00:00.000Z
-description: '-'
 tags:
   - note
 title: 인류는 생명체다

@@ -1,6 +1,5 @@
 ---
 date: 2025-12-15T00:00:00.000Z
-description: Lorem ipsum dolor sit amet
 tags:
   - read
 title: 자살의 연구

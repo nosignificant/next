@@ -1,7 +1,6 @@
 ---
 title: 그 많던 싱아는 누가 다 먹었을까
 date: 2025-12-18
-description: Lorem ipsum dolor sit amet
 tags:
   - read
 ---

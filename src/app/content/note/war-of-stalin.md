@@ -1,6 +1,5 @@
 ---
 date: 2025-11-13T00:00:00.000Z
-description: Lorem ipsum dolor sit amet
 tags:
   - read
 title: 스탈린의 전쟁

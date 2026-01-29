@@ -1,6 +1,5 @@
 ---
 date: 2025-09-09T00:00:00.000Z
-description: Lorem ipsum dolor sit amet
 tags:
   - read
   - Dostoevsky
