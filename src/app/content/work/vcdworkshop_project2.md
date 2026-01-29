@@ -1,7 +1,8 @@
 ---
-date: 2024-11-28
+date: 2024-11-28T00:00:00.000Z
 tags:
   - poster
+title: vcdworkshop_project2
 ---
 
 ### 제작과정

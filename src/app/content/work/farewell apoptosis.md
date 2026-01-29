@@ -1,8 +1,9 @@
 ---
-date: 2025-12-10
+date: 2025-12-10T00:00:00.000Z
 tags:
   - 3D
   - code
+title: farewell apoptosis
 ---
 <iframe 
   width="100%" 

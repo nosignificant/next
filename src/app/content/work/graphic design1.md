@@ -1,5 +1,7 @@
 ---
-date: 2023-06-21
+date: 2023-06-21T00:00:00.000Z
 tags:
   - poster
+title: graphic design1
 ---
+

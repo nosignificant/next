@@ -1,7 +1,8 @@
 ---
-date: 2023-10-21
+date: 2023-10-21T00:00:00.000Z
 tags:
   - poster
+title: graphic design2_ project large
 ---
 
 ### 기획

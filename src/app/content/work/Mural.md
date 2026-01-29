@@ -1,7 +1,8 @@
 ---
-date: 2024-04-30
+date: 2024-04-30T00:00:00.000Z
 tags:
   - illust
+title: Mural
 ---
 
 ![](/img/stickers/1.jpeg)

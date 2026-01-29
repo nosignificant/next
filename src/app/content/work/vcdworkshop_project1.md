@@ -1,7 +1,8 @@
 ---
-date: 2024-11-24
+date: 2024-11-24T00:00:00.000Z
 tags:
   - code
+title: vcdworkshop_project1
 ---
 
 ### 제작 과정

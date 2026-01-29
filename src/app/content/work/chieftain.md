@@ -1,7 +1,8 @@
 ---
-date: 2022-12-20
+date: 2022-12-20T00:00:00.000Z
 tags:
   - 3D
+title: chieftain
 ---
 <iframe 
   width="100%" 
