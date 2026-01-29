@@ -1,8 +1,9 @@
 ---
-date: 2025-12-21
+date: 2025-12-21T00:00:00.000Z
 tags:
   - code
   - procedural
+title: inverse kinematics 1
 ---
 [깃허브 링크](https://github.com/nosignificant/procedural/tree/main/1.%20Basic)
 

@@ -1,9 +1,10 @@
 ---
-date: 2025-01-02
+date: 2025-01-02T00:00:00.000Z
 description: Lorem ipsum dolor sit amet
 tags:
   - read
   - Camus
+title: 정의의 사람들 & 계엄령
 ---
 
 ### 계엄령

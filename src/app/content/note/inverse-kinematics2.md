@@ -1,8 +1,9 @@
 ---
-date: 2025-12-30
+date: 2025-12-30T00:00:00.000Z
 tags:
   - code
   - procedural
+title: inverse kinematics 2
 ---
 [참고한 링크](https://github.com/zalo/MathUtilities/blob/master/Assets/IK/CCDIK/CCDIKJoint.cs)
 

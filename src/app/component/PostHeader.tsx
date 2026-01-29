@@ -6,7 +6,7 @@ export default function PostHeader({ post }: { post: Post }) {
     <div className="mb-10 pt-4 border-b border-neutral-100 pb-8">
       {/* 제목 */}
       <h1 className=" md:text-xl font-bold mb-6 tracking-tight text-black">
-        {post.slug}
+        {post.title}
       </h1>
       
       {/* 메타 정보 (날짜 • 태그) */}

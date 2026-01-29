@@ -1,8 +1,9 @@
 ---
-date: 2026-01-29
+date: 2026-01-29T00:00:00.000Z
 tags:
   - code
   - procedural
+title: CCDIK 활용해보기
 ---
 
 ![](img/note/procedural/CCDIK_p.png)

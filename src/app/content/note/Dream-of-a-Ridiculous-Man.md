@@ -1,9 +1,10 @@
 ---
-date: 2025-04-08
+date: 2025-04-08T00:00:00.000Z
 description: 병기는 자연의 이빨
 tags:
   - read
-  - Dostoevsky 
+  - Dostoevsky
+title: 우스운 자의 꿈
 ---
 
 짧은 자기소개 그리고 하룻밤 사이의 일을 이야기하는데 

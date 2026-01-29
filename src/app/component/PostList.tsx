@@ -52,7 +52,7 @@ export default function PostList({ posts, handleSelected, selected, currentTag }
             </div>
 
             <div className="truncate w-full text-[13px] pt-[1px]">
-              {post.slug} 
+              {post.title} 
             </div>
           </Link>
         );

@@ -1,8 +1,9 @@
 ---
-date: 2025-04-07
+date: 2025-04-07T00:00:00.000Z
 description: Lorem ipsum dolor sit amet
 tags:
   - read
+title: 재귀성과 우연성
 ---
 
 ### 1장

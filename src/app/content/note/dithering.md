@@ -1,8 +1,9 @@
 ---
-date: 2026-01-14
+date: 2026-01-14T00:00:00.000Z
 tags:
   - code
   - graphics
+title: dithering
 ---
 디더링은 이미지를 표현할 때 의도적으로 잡음을 넣어 제한된 색으로 이미지를 자연스럽게 표현하는 방법이다. 내가 만들 디더링은 간단한 버전이지만 [return of the Obra Dinn](https://forums.tigsource.com/index.php?action=profile%3Bu%3D3073%3Bsa%3DshowPosts) 개발자 분의 블로그에 설명이 잘 되어있다. 
 

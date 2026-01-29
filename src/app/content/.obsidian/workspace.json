@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "bda7f08ff5c1591e",
+    "id": "8aadd24f9c9aadf3",
     "type": "split",
     "children": [
       {
-        "id": "7da2cc6455e07af9",
+        "id": "45728a3fe4b45554",
         "type": "tabs",
         "children": [
           {
-            "id": "56fd96d52e57c6fe",
+            "id": "d375f2841ba7d802",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/app/content/note/inverse kinematics 1.md",
+                "file": "note/Boid-Flocking.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "inverse kinematics 1"
+              "title": "Boid-Flocking"
             }
           }
         ]
@@ -27,28 +27,28 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "9126df86047f87a6",
+    "id": "645db79c39e51e52",
     "type": "split",
     "children": [
       {
-        "id": "18ecdf670f0156e7",
+        "id": "6096ffc9ae9c517a",
         "type": "tabs",
         "children": [
           {
-            "id": "3692e1ce2fc226e9",
+            "id": "92dd3e0208c6c040",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical",
-                "autoReveal": false
+                "sortOrder": "byCreatedTime",
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
             }
           },
           {
-            "id": "5e054beed05aaa35",
+            "id": "5629503f39115444",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "f64a4a400c46cb44",
+            "id": "7a523e9f69300e7f",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -81,48 +81,48 @@
     "width": 300
   },
   "right": {
-    "id": "a1ca98d8db876418",
+    "id": "8296d8b85a20b30b",
     "type": "split",
     "children": [
       {
-        "id": "d0e0baff13f19d65",
+        "id": "48e0df7de732fd00",
         "type": "tabs",
         "children": [
           {
-            "id": "3de1e718fbc529ac",
+            "id": "cf01ef6262533508",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "src/app/content/study/웹 만드는 기록.md",
+                "file": "note/Boid-Flocking.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
+                "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 웹 만드는 기록"
+              "title": "Backlinks for Boid-Flocking"
             }
           },
           {
-            "id": "146465d2f72d3000",
+            "id": "baa08d992dc83212",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "src/app/content/study/웹 만드는 기록.md",
+                "file": "note/Boid-Flocking.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 웹 만드는 기록"
+              "title": "Outgoing links from Boid-Flocking"
             }
           },
           {
-            "id": "ab6535ca013198d1",
+            "id": "53f51fb7eafb7cab",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,26 +137,39 @@
             }
           },
           {
-            "id": "663563b4856a5612",
+            "id": "e0d737f543ca3333",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "c3066ef66d8384a2",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/app/content/study/웹 만드는 기록.md",
+                "file": "note/Boid-Flocking.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 웹 만드는 기록"
+              "title": "Outline of Boid-Flocking"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -169,52 +182,33 @@
       "bases:Create new base": false
     }
   },
-  "active": "56fd96d52e57c6fe",
+  "active": "d375f2841ba7d802",
   "lastOpenFiles": [
-    "src/app/favicon.ico",
-    "src/app/Artboard 1.png",
-    "src/app/favicon.png",
-    "src/app/favicon.svg",
-    "src/app/content/note/모든 것은 영원했다, 사라지기 전까지는 - 2장까지.md",
-    "src/app/content/note/모든 것은 영원했다, 사라지기 전까지는.md",
-    "src/app/content/note/그 많던 싱아는 누가 다 먹었을까 copy.md",
-    "src/app/content/note/openGL-triangle.md",
-    "src/app/content/note/inverse kinematics 1 copy.md",
-    "src/app/content/note/inverse kinematics 2.md",
-    "src/app/content/note/kabsch.md",
-    "src/app/content/note/그 많던 싱아는 누가 다 먹었을까.md",
-    "src/app/content/note/세계는 이렇게 바뀐다, 수레바퀴 이후.md",
-    "src/app/content/note/스탈린의 전쟁.md",
-    "src/app/content/note/스웨덴 연설, 문학 비평.md",
-    "src/app/content/note/여름방학 UROP - comfyUI.md",
-    "src/app/content/note/우스운 자의 꿈.md",
-    "src/app/content/note/인류는 생명체다.md",
-    "src/app/content/note/자살의 연구.md",
-    "src/app/content/note/재귀성과 우연성.md",
-    "src/app/content/note/정의의 사람들& 계엄령.md",
-    "src/app/content/note/카라마조프가의 형제들.md",
-    "src/app/content/note/튜플, 객체, 2차원 배열.md",
-    "src/app/content/note/히스토리에, 알렉산드로스 제국의 눈물, 유레카, 한니발 전기를 읽고.md",
-    "src/app/content/note/inverse kinematics 1.md",
-    "src/app/component/OpenButton.tsx",
-    "src/app/[slug]/page.tsx",
-    "src/app/[slug]",
-    "src/app/note/[slug]/page.tsx",
-    "src/app/note/[slug]",
-    "src/app/note",
-    "src/app/work/[slug]/page.tsx",
-    "public/favicon.png",
-    "public/favicon.ico",
-    "src/app/avicon.ico",
-    "src/app/avicon.ico.png",
-    "src/app/icon.png",
-    "public/icon.png",
-    "node_modules/@types/react-syntax-highlighter/README.md",
-    "node_modules/highlight.js/styles/school-book.png",
-    "node_modules/highlight.js/scss/school-book.png",
-    "node_modules/highlight.js/styles/brown-papersq.png",
-    "node_modules/highlight.js/README.md",
-    "node_modules/@types/prismjs/README.md",
-    "node_modules/format/Readme.md"
+    "note/openGL-shader-texture.md",
+    "note/dithering.md",
+    "note/Boid-Flocking.md",
+    "note/CCDIK-practice.md",
+    "note/world-change.md",
+    "note/GLSL-HLSL.md",
+    "note/fabrik-walking.md",
+    "note/historie.md",
+    "note/tuple-object-2dimension-array.md",
+    "note/brother-karamazov.md",
+    "note/Just-Assassins.md",
+    "note/Recursivity-Contingency.md",
+    "note/study-of-suicide.md",
+    "note/humanity-is-creature.md",
+    "note/Dream-of-a-Ridiculous-Man.md",
+    "note/UROP.md",
+    "note/sing-a.md",
+    "note/war-of-stalin.md",
+    "note/everything-persist-before-vanish.md",
+    "note/everything-change-after.md",
+    "note/robot-dream.md",
+    "note/robot_Dream.md",
+    "note/로봇 드림.md",
+    "note/로봇드림.md",
+    "note/싱아.md",
+    "note/그 많던 싱아는 누가 다 먹었을까.md"
   ]
 }

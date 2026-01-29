@@ -1,8 +1,9 @@
 ---
-date: 2026-01-05
+date: 2026-01-05T00:00:00.000Z
 tags:
   - code
   - graphics
+title: openGL-triangle
 ---
 https://learnopengl.com/Getting-started/Hello-Triangle
 

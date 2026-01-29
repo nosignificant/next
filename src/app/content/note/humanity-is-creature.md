@@ -1,8 +1,9 @@
 ---
-date: 2025-06-04
-description: "-"
+date: 2025-06-04T00:00:00.000Z
+description: '-'
 tags:
   - note
+title: 인류는 생명체다
 ---
 
 삶과 죽음의 명확한 경계는 없다

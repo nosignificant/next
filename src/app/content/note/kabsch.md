@@ -1,8 +1,9 @@
 ---
-date: 2025-12-31
+date: 2025-12-31T00:00:00.000Z
 tags:
   - code
   - procedural
+title: kabsch
 ---
 
 [참고한 링크](https://zalo.github.io/blog/kabsch/)

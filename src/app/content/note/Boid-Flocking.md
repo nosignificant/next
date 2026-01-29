@@ -1,8 +1,9 @@
 ---
-date: 2026-01-29
+date: 2026-01-29T00:00:00.000Z
 tags:
   - code
   - procedural
+title: Boid Flocking
 ---
 
 [참고한 곳 1](https://firefox214979.tistory.com/41)

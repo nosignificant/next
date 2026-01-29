@@ -1,9 +1,10 @@
 ---
-date: 2025-09-09
+date: 2025-09-09T00:00:00.000Z
 description: Lorem ipsum dolor sit amet
 tags:
   - read
-  - Dostoevsky 
+  - Dostoevsky
+title: 카라마조프가의 형제들
 ---
 
 두번째 읽으면서 인터넷 이곳저곳을 탐방하며 관련 해석 글을 읽었는데 드미트리에 대해서도, 스메르쟈코프에 대한 글도 너무 재밌었지만 그 중 어쩐지 나만의 방식으로 카라마조프를 해석할 수 있게 한 문장은 “마음은 신과 악마의 전쟁터”라는 구절 

@@ -1,8 +1,9 @@
 ---
-date: 2026-01-08
+date: 2026-01-08T00:00:00.000Z
 tags:
   - code
   - graphics
+title: 'openGL-shader,texture'
 ---
 ![](/img/note/code/openGL_3456.png)
 

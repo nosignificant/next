@@ -1,8 +1,9 @@
 ---
-date: 2026-01-08
+date: 2026-01-08T00:00:00.000Z
 tags:
   - code
   - graphics
+title: GLSL - HLSL
 ---
 [유니티 공식 문서](https://docs.unity3d.com/kr/530/Manual/SL-Shader.html)
 ## openGL vertex shader
@@ -29,7 +30,7 @@ v_uv = uv * _BaseMap_ST.xy + _BaseMap_ST.zw;
 ```
 
 
-[이전에 작성했던](/openGL-shader%2Ctexture) GLSL 코드에서 몇개 더 추가했다. 각각을 유니티의 HLSL에 대응시켜본다. 
+[이전에 작성했던](/openGL-shader-texture) GLSL 코드에서 몇개 더 추가했다. 각각을 유니티의 HLSL에 대응시켜본다. 
 ### uniform - properties
 gpu 전역 변수다.
 

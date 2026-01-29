@@ -1,8 +1,9 @@
 ---
-date: 2026-01-04
+date: 2026-01-04T00:00:00.000Z
 description: Lorem ipsum dolor sit amet
 tags:
   - read
+title: '모든 것은 영원했다, 사라지기 전까지는 - 2장까지'
 ---
 
 ## 진술적 발화와 수행적 발화

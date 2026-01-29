@@ -1,8 +1,9 @@
 ---
-date: 2026-01-13
+date: 2026-01-13T00:00:00.000Z
 tags:
   - code
   - procedural
+title: fabrik으로 걷는 발
 ---
 <iframe 
   width="100%" 
