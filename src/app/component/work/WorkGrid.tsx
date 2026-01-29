@@ -130,7 +130,7 @@ export default function WorkGrid({ works }: { works: Post[] }) {
             </div>
             <div className="mt-4 max-w-full">
               <span className="text-[10px] text-black font-mono block opacity-0 group-hover:opacity-100 transition-opacity truncate">
-                {work.slug}
+                {work.title}
               </span>
             </div>
           </Link>
