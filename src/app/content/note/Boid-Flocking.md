@@ -1,5 +1,5 @@
 ---
-date: 2026-01-29T00:00:00.000Z
+date: 2026-01-30
 tags:
   - code
   - procedural
@@ -13,7 +13,7 @@ title: Boid Flocking
 <iframe 
   width="80%" 
   height="400" 
-  src="https://youtube.com/embed/l2y5eohecYI" 
+  src="https://youtube.com/embed/tDe_cQIXN7w" 
   title="YouTube video player" 
   frameborder="0" 
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -23,6 +23,7 @@ title: Boid Flocking
 새의 군집에서 따온 알고리즘이라고 한다. Boid 알고리즘이라고도 부른다. 
 
 정렬/분리/응집할 방향을 계산한 후 전부 합쳐서 개별 단위가 이동해야할 방향을 결정한다.
+속도가 나에게 생소한 개념이라 이 부분이 어려웠다. 
 ```
 Vector3 steeringForce = (alignment * alignmentWeight) + //정렬
                         (cohesion * cohesionWeight) + //응집
@@ -39,11 +40,10 @@ foreach (Boid neighbor in neighbors)
   verageVelocity += neighbor.velocity;
 
 averageVelocity /= neighbors.Count;
-//현재 속도 + 필요한 힘 = 목표 속도이므로 , 필요한 힘을 구하려면 목표 속도 - 현재 속도
+
 return (averageVelocity - boid.velocity).normalized;
 ```
-
-
+현재 속도 + 필요한 힘 = 목표 속도이므로 , 필요한 힘을 구하려면 목표 속도 - 현재 속도를 한다. 이 개념이 잘 안 와닿았다.
 
 ## 분리 
 거리가 일정 이상 가까워지면 밀어낸다. `목적지 - 나` 하면 목적지로 향하는 방향이 되고, `나 - 목적지` 를 하면 목적지에서 멀어지는 방향이 된다. 
@@ -93,4 +93,4 @@ weightedCenter /= totalWeight;
 
 이 세 가지를 더해서 `transform.forward`를 결정한다. 
 
-이 알고리즘이랑 [kabsch](/kabsch) 알고리즘이랑 합치려고 했는데 막상 해보니 생각보다 드라마틱하게 움직이지 않아서 여기저기 많이 고쳐써야할 것 같다.
+이 알고리즘이랑 [kabsch](/kabsch) 알고리즘이랑 합쳐보기 위해서 이것저것 만졌다. 타겟과 가까운데 속도가 너무 빠른 상태이면 감속시키고 노이즈를 추가했다.
