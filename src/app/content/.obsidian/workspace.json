@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "private/디자인 링크 모음.md",
+                "file": "note/All-Quiet-on-the-Western-Front.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "디자인 링크 모음"
+              "title": "All-Quiet-on-the-Western-Front"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "private/디자인 링크 모음.md",
+                "file": "note/All-Quiet-on-the-Western-Front.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 디자인 링크 모음"
+              "title": "Backlinks for All-Quiet-on-the-Western-Front"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "private/디자인 링크 모음.md",
+                "file": "note/All-Quiet-on-the-Western-Front.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 디자인 링크 모음"
+              "title": "Outgoing links from All-Quiet-on-the-Western-Front"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "private/디자인 링크 모음.md",
+                "file": "note/All-Quiet-on-the-Western-Front.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 디자인 링크 모음"
+              "title": "Outline of All-Quiet-on-the-Western-Front"
             }
           }
         ],
@@ -186,40 +186,42 @@
   },
   "active": "d375f2841ba7d802",
   "lastOpenFiles": [
-    "private/서보.md",
-    "private/디자인 링크 모음.md",
-    "private/코딩 링크 모음.md",
-    "private/블로그 정리하고 만지기.md",
-    "private/타이포그래피 정리.md",
-    "private/슬기와 민이 애용하는 폰트.md",
-    "private/idea/아이디어.md",
-    "private/idea/내 기록의 역사.md",
-    "private/idea/레인월드 고대인.md",
+    "note/The-Rite-of-Spring.md",
+    "private/read/모든 것은 영원했다, 사라지기 전까지는.md",
+    "note/All-Quiet-on-the-Western-Front.md",
+    "note/everything-persist-before-vanish.md",
+    "note/openGL-triangle.md",
+    "note/openGL-shader-texture.md",
+    "note/Unit-operation.md",
+    "private/read/미디어의 지질학.md",
     "note/world-change.md",
+    "private/idea/레인월드 고대인.md",
+    "private/idea/로봇 드림.md",
+    "private/template/book template.md",
+    "private/template/Zettelkasten template.md",
+    "private/idea/슬기와 민이 애용하는 폰트.md",
+    "private/idea/블로그 정리하고 만지기.md",
+    "private/idea/타이포그래피 정리.md",
+    "private/idea/역사가는예술가인가.md",
+    "private/idea/내 기록의 역사.md",
+    "private/idea/서보를 위한 아이디어 정리.md",
+    "private/코드/코딩 참고 링크.md",
+    "private/코드/soft body.md",
+    "private/코드/블로그를 어떻게 더 발전시킬 수 있을까?.md",
+    "private/코드/kabsch를 기반으로 굴러다니는 생물 만들기.md",
+    "private/코드/만들 생물 목록.md",
     "note/Recursivity-Contingency.md",
+    "note/humanity-is-creature.md",
+    "private/template",
+    "private/read",
     "private/img/Pasted image 20260128134352.png",
     "private/img/Pasted image 20260128140954.png",
     "private/img/스크린샷 2026-01-28 오후 12.32.48.png",
     "private/img/Pasted image 20260128134349.png",
     "private/img/Pasted image 20260128134345.png",
     "private/img",
-    "private/코드/코딩 참고 링크.md",
-    "private/코드/블로그를 어떻게 더 발전시킬 수 있을까?.md",
-    "private/코드/soft body.md",
-    "private/코드/만들 생물 목록.md",
-    "private/코드/kabsch를 기반으로 굴러다니는 생물 만들기.md",
-    "private/코드/dithering.md",
     "private/코드",
-    "private/journal/2025.10.md",
-    "private/journal/2026.01.md",
-    "private/journal/2025.12.md",
-    "private/journal/2025.11.md",
-    "private/journal/0604.md",
-    "private/journal/0818.md",
     "private/journal",
-    "private/idea/역사가는예술가인가.md",
-    "private/idea/로봇 드림.md",
-    "private/idea/棄樂園.md",
     "private/idea",
     "private",
     "무제 폴더"
