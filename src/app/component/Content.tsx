@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import Link from "next/link"; 
+import wikiLinkPlugin from "remark-wiki-link";
 
 import type { ComponentPropsWithoutRef, JSX } from "react";
 import type { ExtraProps } from "react-markdown";
@@ -12,8 +13,6 @@ import type { Post } from "../lib/type";
 
 import Heading from "./document/Heading";
 import BlockCode from "./document/BlockCode";
-
-
 
 type MarkdownComponentProps<T extends keyof JSX.IntrinsicElements & string> = 
   ComponentPropsWithoutRef<T> & ExtraProps;
@@ -59,27 +58,28 @@ const components = {
     <li className="pl-1" {...props} />
   ),
 
-  a: ({ href, children, ...props }: MarkdownComponentProps<"a">) => {
+a: ({ href, children, className, ...props }: MarkdownComponentProps<"a">) => {
     const linkHref = href || "";
     const isInternal = linkHref.startsWith("/") || linkHref.startsWith("#");
     
-    const linkClasses = "text-blue-700 cursor-pointer transition-colors";
+    const defaultClasses = "text-blue-700 cursor-pointer transition-colors";
+    const combinedClasses = `${defaultClasses} ${className || ""}`.trim();
 
     if (isInternal) {
       return (
-        <Link href={linkHref} className={linkClasses} {...props}>
+        <Link href={linkHref} className={combinedClasses} {...props}>
           {children}
         </Link>
       );
     }
 
-    // 외부 링크는 새 탭으로 열기
+    // 외부 링크
     return (
       <a 
         href={linkHref} 
         target="_blank" 
         rel="noopener noreferrer" 
-        className={linkClasses} 
+        className={combinedClasses} 
         {...props}
       >
         {children}
@@ -117,7 +117,17 @@ export default function Content({ posts, selected }: { posts: Post[]; selected: 
     ">
       <ReactMarkdown 
         rehypePlugins={[rehypeSlug, rehypeRaw]}        
-        remarkPlugins={[remarkGfm]} 
+        remarkPlugins={[
+          remarkGfm,
+          [
+            wikiLinkPlugin,
+            {
+              aliasDivider: "|", 
+              hrefTemplate: (permalink: string) => `/${permalink}`,
+              pageResolver: (name: string) => [name.replace(/ /g, '-'), name],
+            }
+          ]
+        ]} 
         components={components} 
       >
         {post.content}
