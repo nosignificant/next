@@ -23,8 +23,6 @@ title: Boid Flocking
 새의 군집에서 따온 알고리즘이라고 한다. Boid 알고리즘이라고도 부른다. 
 
 정렬/분리/응집할 방향을 계산한 후 전부 합쳐서 개별 단위가 이동해야할 방향을 결정한다.
-
-속도가 나에게 생소한 개념이라 속도를 사용하는 부분이 어려웠다. 
 ```
 Vector3 steeringForce = (alignment * alignmentWeight) + //정렬
                         (cohesion * cohesionWeight) + //응집
@@ -33,6 +31,7 @@ Vector3 steeringForce = (alignment * alignmentWeight) + //정렬
 
 boid.velocity += steeringForce * Time.deltaTime;
 ```
+
 
 ## 정렬
 주변에 있는 개체들이 향하고 있는 방향으로 가는 속도의 평균이다. 
@@ -80,7 +79,7 @@ return (centerOfMass - transform.position);
 중심점을 그냥 `위치의 합산 / 이웃의 수` 로 구할 수도 있지만, 가까울수록 더 큰 영향을 미치게끔 `1/거리` 를 곱해줄 수도 있다. 
 
 ```
- foreach (Transform neighbor in neighbors)
+foreach (Transform neighbor in neighbors)
 {
 float distance = Vector3.Distance(transform.position, neighbor.position);
 
@@ -92,9 +91,11 @@ totalWeight += weight;
 weightedCenter /= totalWeight;
 ```
 
-이 세 가지를 더해서 `transform.forward`를 결정한다. 
+정렬, 분리, 응집 세 가지를 더해서 `transform.forward`를 결정한다. 
 
-이 알고리즘이랑 [[kabsch]] 알고리즘이랑 합쳐보기 위해서 이것저것 만졌다. 타겟과 가까운데 속도가 너무 빠른 상태이면 감속시키고 노이즈를 추가했다. 기존의 kabsch는 정지해있어서 생물로 만들자니 정지한 채로 따라오기만 했는데 flocking과 합치니 훨씬 유동적으로 움직인다. 
+이 알고리즘이랑 [[kabsch]] 알고리즘이랑 합쳐보기 위해서 이것저것 만졌다. 타겟과 가까운데 속도가 너무 빠른 상태이면 감속시키고 , 타겟을 따라가게 만들었다. 그리고 마지막으로 노이즈를 추가했다. 
+
+기존의 kabsch는 정지해있어서 생물로 만들자니 정지한 채로 따라오기만 했는데 flocking과 합치니 훨씬 유동적으로 움직인다. 
 
 <iframe 
   width="80%" 
@@ -107,3 +108,21 @@ weightedCenter /= totalWeight;
 ></iframe>
 
 
+
+## line renderer을 그리고 다리를 연결하기 
+
+<iframe 
+  width="80%" 
+  height="400" 
+  src="https://youtube.com/embed/UacMMhd8kCU" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen
+></iframe>
+
+다리, 몸통을 완성했으니 선을 그어주기만 하면 연결되어 보인다. 선에 텍스쳐를 넣을 때는 일반적으로 다른 메쉬들에 텍스쳐를 입힐 때와 마찬가지로 머티리얼을 생성하면 된다. 
+
+하나씩 개별적으로 만들고 정리하고 연결하니 단계적으로 진행되고 코드에서 문제가 발생했을 때 원인을 파악하기 쉽다. 코딩을 처음 접했을 때 단계를 나누지 못하고 모든 코드를 한 파일에 넣어서 한 번에 처리하려고 한 게 패착 원인인 것 같다.
+
+이제 이 다음 진행해야할 것으로 다리들끼리 서로 겹치지 않게끔 하면 될 것 같다. 
