@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "note/openGL-light, model.md",
+                "file": "private/code/gameProgrammingPattern/1-3. Observer.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "openGL-light, model"
+              "title": "1-3. Observer"
             }
           }
         ],
@@ -201,15 +201,17 @@
   },
   "active": "6df3272b4b526503",
   "lastOpenFiles": [
-    "note/openGL-shader-texture.md",
+    "work/scarf0.md",
+    "work/Mural copy.md",
+    "private/code/gameProgrammingPattern/1-2. Flyweight.md",
     "note/openGL-light, model.md",
+    "note/openGL-shader-texture.md",
     "private/code/openGL.md",
     "private/code/쉐이더 자료 찾기.md",
     "private/자소서 시발.md",
     "private/기타등등.md",
     "private/앞으로 할 일.md",
     "private/서울영커리언스.md",
-    "private/code/gameProgrammingPattern/1-2. Flyweight.md",
     "private/code/gameProgrammingPattern/1-3. Observer.md",
     "note/Designing creature AI.md",
     "private/code/gameProgrammingPattern/1-1. Command.md",
@@ -231,8 +233,6 @@
     "private/img/Pasted image 20260128140954.png",
     "private/journal/2026.02.md",
     "private/idea/역사가는예술가인가.md",
-    "private/idea/내 기록의 역사.md",
-    "private/idea/아이디어.md",
     "Untitled.base",
     "Pasted image 20260204191810.png",
     "private/design",
